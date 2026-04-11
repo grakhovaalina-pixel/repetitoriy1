@@ -18,8 +18,7 @@ html { scroll-behavior: smooth; }
 body { background: var(--cream); color: var(--text); font-family: "Outfit", sans-serif; font-weight: 300; line-height: 1.7; }
 h1, h2, h3 { font-family: "Playfair Display", serif; font-weight: 400; line-height: 1.1; }
 .container { max-width: 1080px; margin: 0 auto; padding: 0 36px; }
-
-  
+ 
 /* HEADER */
 header { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(250,246,240,0.94); backdrop-filter: blur(10px); border-bottom: 1px solid var(--sand); }
 .header-inner { max-width: 1080px; margin: 0 auto; padding: 0 36px; height: 62px; display: flex; align-items: center; justify-content: space-between; }
@@ -31,14 +30,14 @@ nav a { text-decoration: none; font-size: 13px; color: var(--muted); letter-spac
 nav a:hover { color: var(--brown-dk); }
 .nav-cta { background: var(--brown-dk) !important; color: var(--cream) !important; padding: 8px 18px; border-radius: 3px; }
 .nav-cta:hover { background: var(--brown) !important; }
-
+ 
 /* HERO */
 .hero { padding-top: 62px; min-height: 52vh; display: flex; flex-direction: column; justify-content: flex-end; background: var(--cream); border-bottom: 1px solid var(--sand); }
 .hero-content { padding: 72px 36px 80px; max-width: 1080px; margin: 0 auto; width: 100%; }
 .hero-label { font-size: 11px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--brown-lt); margin-bottom: 24px; }
 .hero-title { font-size: clamp(36px, 5vw, 68px); font-weight: 400; color: var(--brown-dk); line-height: 1.05; margin-bottom: 24px; animation: fadeUp 0.7s ease both; }
 .hero-sub { font-size: clamp(15px, 1.6vw, 17px); color: var(--muted); font-weight: 300; max-width: 560px; line-height: 1.65; animation: fadeUp 0.7s 0.15s ease both; }
-
+ 
 /* ПРЕИМУЩЕСТВА */
 .features { background: var(--cream); padding: 72px 0; border-bottom: 1px solid var(--sand); }
 .features-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0 56px; }
@@ -46,7 +45,7 @@ nav a:hover { color: var(--brown-dk); }
 .bullet-list li { display: flex; gap: 18px; align-items: flex-start; padding: 14px 0; border-bottom: 1px solid var(--sand); font-size: 15px; font-weight: 300; color: var(--text); line-height: 1.55; }
 .bullet-list li:first-child { border-top: 1px solid var(--sand); }
 .bullet-list .n { font-family: "Playfair Display", serif; font-size: 12px; color: var(--brown-lt); min-width: 18px; padding-top: 4px; flex-shrink: 0; }
-
+ 
 /* КАК ЭТО РАБОТАЕТ */
 .how { background: var(--brown-dk); padding: 88px 0; }
 .how h2 { font-size: clamp(28px, 3.5vw, 44px); color: var(--cream); margin-bottom: 52px; }
@@ -56,7 +55,7 @@ nav a:hover { color: var(--brown-dk); }
 .how-step-num { font-family: "Playfair Display", serif; font-size: 48px; font-weight: 400; color: var(--brown-lt); opacity: 0.4; line-height: 1; margin-bottom: 20px; }
 .how-step-title { font-family: "Playfair Display", serif; font-size: 20px; color: var(--cream); margin-bottom: 12px; }
 .how-step-text { font-size: 14px; font-weight: 300; color: rgba(250,246,240,0.55); line-height: 1.7; }
-
+ 
 /* ЗАЛЫ */
 .rooms { background: var(--cream); padding: 88px 0; border-bottom: 1px solid var(--sand); }
 .rooms h2 { font-size: clamp(28px, 3.5vw, 44px); color: var(--brown-dk); margin-bottom: 52px; }
@@ -74,7 +73,7 @@ nav a:hover { color: var(--brown-dk); }
 .room-btn:hover { background: var(--brown); }
 .room-row.reverse .room-photo { order: 2; }
 .room-row.reverse .room-body { order: 1; }
-
+ 
 /* ЦЕНЫ */
 .pricing { background: var(--brown-dk); padding: 88px 0; border-bottom: 1px solid rgba(255,255,255,0.08); }
 .pricing h2 { font-size: clamp(28px, 3.5vw, 44px); color: var(--cream); margin-bottom: 12px; }
@@ -87,20 +86,20 @@ nav a:hover { color: var(--brown-dk); }
 .pricing-row.last { border-bottom: none; padding-bottom: 24px; }
 .pricing-label { font-size: 13px; font-weight: 300; color: var(--muted); }
 .pricing-price { font-family: "Playfair Display", serif; font-size: 15px; color: var(--brown-dk); white-space: nowrap; }
-
+ 
 /* ВИДЖЕТ */
 .booking { background: var(--cream); padding: 88px 0; border-bottom: 1px solid var(--sand); }
 .booking h2 { font-size: clamp(28px, 3.5vw, 44px); color: var(--brown-dk); margin-bottom: 44px; }
 .booking-frame { border-radius: 4px; overflow: hidden; }
 .booking-frame iframe { display: block; }
-
+ 
 /* АДРЕС */
 .address-section { background: var(--beige); padding: 88px 0; border-bottom: 1px solid var(--sand); }
 .address-section h2 { font-size: clamp(28px, 3.5vw, 44px); color: var(--brown-dk); margin-bottom: 8px; }
 .address-sub { font-family: "Playfair Display", serif; font-size: 18px; font-style: italic; color: var(--muted); margin-bottom: 36px; }
 .map-wrap { border-radius: 4px; overflow: hidden; height: 420px; }
 .map-wrap iframe { width: 100%; height: 100%; border: none; display: block; }
-
+ 
 /* КОНТАКТЫ */
 .contacts { background: var(--cream); padding: 88px 0; }
 .contacts-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
@@ -123,65 +122,62 @@ nav a:hover { color: var(--brown-dk); }
 .form-submit { margin-top: 8px; background: var(--brown-dk); color: var(--cream); padding: 14px 32px; border: none; border-radius: 3px; font-family: "Outfit", sans-serif; font-size: 13px; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; transition: background 0.2s; width: 100%; }
 .form-submit:hover { background: var(--brown); }
 .form-success { display: none; margin-top: 14px; padding: 14px 18px; background: var(--beige); border-radius: 3px; border: 1px solid var(--sand); font-size: 14px; color: var(--muted); text-align: center; font-family: "Playfair Display", serif; font-style: italic; }
-
-/* FOOTER */
-footer { background: var(--brown-dk); padding: 32px 0; }
-.footer-inner { display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
-.footer-logo { display: flex; align-items: center; gap: 10px; }
-.footer-owl { height: 28px; width: auto; object-fit: contain; }
-.footer-name { font-family: "Playfair Display", serif; font-size: 17px; color: var(--cream); opacity: 0.45; }
-.footer-copy { font-size: 12px; color: var(--brown-lt); opacity: 0.4; }
-
-  /* FOOTER */
+ 
+/* ========================
+   FOOTER — два столбика на десктопе, виден на мобиле
+   ======================== */
 .site-footer {
   background: var(--brown-dk);
   padding: 40px 0;
 }
-
+ 
 .footer-inner {
-  display: flex;
-  justify-content: space-between;
-  gap: 60px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px 60px;
+  align-items: start;
 }
-
+ 
 .footer-col {
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
-
+ 
 .footer-title {
   font-family: "Playfair Display", serif;
   font-size: 16px;
   color: var(--cream);
-  margin-bottom: 10px;
+  margin-bottom: 6px;
 }
-
+ 
 .footer-col a {
   text-decoration: none;
   color: var(--brown-lt);
   font-size: 13px;
   transition: color 0.2s;
 }
-
+ 
 .footer-col a:hover {
   color: var(--cream);
 }
-
+ 
 .footer-copy {
   font-size: 12px;
   color: var(--brown-lt);
+  opacity: 0.7;
 }
-
-/* ❗ СКРЫТЬ НА МОБИЛКЕ */
+ 
+/* На мобиле — один столбик */
 @media (max-width: 820px) {
-  .site-footer {
-    display: none;
+  .footer-inner {
+    grid-template-columns: 1fr;
+    gap: 32px;
   }
 }
-  
+ 
 @keyframes fadeUp { from { opacity:0; transform:translateY(18px) } to { opacity:1; transform:translateY(0) } }
-
+ 
 @media (max-width: 820px) {
   .container, .header-inner { padding-left: 20px; padding-right: 20px; }
   nav { display: none; }
@@ -199,9 +195,8 @@ footer { background: var(--brown-dk); padding: 32px 0; }
   .contacts-grid { grid-template-columns: 1fr; gap: 48px; }
   .map-wrap { height: 300px; }
 }
-
-
-  /* --- Бургер --- */
+ 
+/* --- Бургер --- */
 .burger {
   display: none;
   flex-direction: column;
@@ -225,32 +220,32 @@ footer { background: var(--brown-dk); padding: 32px 0; }
 .burger.open span:nth-child(2) { opacity: 0; }
 .burger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
  
-/* --- Мобильное меню --- */
+/* --- Мобильное меню — бежевый фон, не сливается со страницей --- */
 .mobile-nav {
   display: none;
   position: fixed;
   top: 62px;
   left: 0;
   right: 0;
-  background: rgba(250,246,240,0.98);
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid var(--sand);
+  background: var(--beige);          /* ← бежевый вместо кремового */
+  border-bottom: 2px solid var(--sand);
   z-index: 99;
   flex-direction: column;
   padding: 8px 0 16px;
+  box-shadow: 0 8px 24px rgba(62,47,30,0.10);
 }
 .mobile-nav.open { display: flex; }
 .mobile-nav a {
   padding: 14px 24px;
   font-size: 15px;
   font-weight: 300;
-  color: var(--text);
+  color: var(--brown-dk);            /* ← тёмный текст, хорошо читается на бежевом */
   text-decoration: none;
   border-bottom: 1px solid var(--sand);
-  transition: color 0.2s;
+  transition: color 0.2s, background 0.2s;
 }
 .mobile-nav a:last-child { border-bottom: none; }
-.mobile-nav a:hover { color: var(--brown); }
+.mobile-nav a:hover { color: var(--brown); background: rgba(224,205,181,0.4); }
  
 /* --- Кнопка наверх --- */
 .back-to-top {
@@ -275,17 +270,15 @@ footer { background: var(--brown-dk); padding: 32px 0; }
 .back-to-top.visible { opacity: 1; pointer-events: auto; }
 .back-to-top:hover { background: var(--brown); }
  
-/* --- Адаптив --- */
 @media (max-width: 820px) {
   nav.main-nav { display: none; }
   .burger { display: flex; }
 }
-  
 </style>
 </head>
-
+ 
 <body>
-
+ 
 <header>
   <div class="header-inner">
     <a href="/repetitoriy1/" class="logo">
@@ -303,22 +296,20 @@ footer { background: var(--brown-dk); padding: 32px 0; }
     </button>
   </div>
 </header>
-
-  <!-- МОБИЛЬНОЕ МЕНЮ -->
+ 
 <div class="mobile-nav" id="mobileNav">
   <a href="/repetitoriy1/">Главная</a>
-    <a href="/repetitoriy1/teachers">Педагогам</a>
+  <a href="/repetitoriy1/teachers">Педагогам</a>
   <a href="/repetitoriy1/students">Ученикам</a>
   <a href="/repetitoriy1/individual">Индивидуальные занятия</a>
-    <a href="/repetitoriy1/instrument-rental">Аренда инструментов</a>
+  <a href="/repetitoriy1/instrument-rental">Аренда инструментов</a>
   <a href="/repetitoriy1/rental">Аренда классов</a>
 </div>
  
-<!-- КНОПКА НАВЕРХ -->
 <button class="back-to-top" id="backToTop" aria-label="Наверх">
   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15l-6-6-6 6"/></svg>
 </button>
-
+ 
 <!-- HERO -->
 <section class="hero">
   <div class="hero-content container">
@@ -326,7 +317,7 @@ footer { background: var(--brown-dk); padding: 32px 0; }
     <p class="hero-sub">Удобная площадка для педагогов, которые ищут постоянное место для занятий с учениками. Три просторных класса, близость к метро, гибкий график и возможность закрепить за собой постоянные часы.</p>
   </div>
 </section>
-
+ 
 <!-- ПРЕИМУЩЕСТВА -->
 <section class="features">
   <div class="container">
@@ -346,7 +337,7 @@ footer { background: var(--brown-dk); padding: 32px 0; }
     </div>
   </div>
 </section>
-
+ 
 <!-- КАК ЭТО РАБОТАЕТ -->
 <section class="how">
   <div class="container">
@@ -370,12 +361,12 @@ footer { background: var(--brown-dk); padding: 32px 0; }
     </div>
   </div>
 </section>
-
+ 
 <!-- ЗАЛЫ -->
 <section class="rooms">
   <div class="container">
     <h2>Наши классы</h2>
-
+ 
     <div class="room-row">
       <div class="room-photo">
         <img src="https://i.ibb.co/1GKL0VGW/1.png" alt="Класс №1">
@@ -390,7 +381,7 @@ footer { background: var(--brown-dk); padding: 32px 0; }
         <a href="#booking" class="room-btn">Забронировать</a>
       </div>
     </div>
-
+ 
     <div class="room-row reverse">
       <div class="room-photo">
         <img src="https://i.ibb.co/XkZGPq8z/2.png" alt="Класс №2">
@@ -405,7 +396,7 @@ footer { background: var(--brown-dk); padding: 32px 0; }
         <a href="#booking" class="room-btn">Забронировать</a>
       </div>
     </div>
-
+ 
     <div class="room-row">
       <div class="room-photo">
         <img src="https://i.ibb.co/NvbDQM8/3.png" alt="Класс №3">
@@ -420,17 +411,17 @@ footer { background: var(--brown-dk); padding: 32px 0; }
         <a href="#booking" class="room-btn">Забронировать</a>
       </div>
     </div>
-
+ 
   </div>
 </section>
-
+ 
 <!-- ЦЕНЫ -->
 <section class="pricing">
   <div class="container">
     <h2>Условия аренды</h2>
     <p class="pricing-sub">Цена указана за 55 минут занятия вместе с учеником</p>
     <div class="pricing-grid">
-
+ 
       <div class="pricing-card">
         <div class="pricing-card-head">
           <span class="pricing-card-title">Педагог и ребёнок</span>
@@ -448,7 +439,7 @@ footer { background: var(--brown-dk); padding: 32px 0; }
           <span class="pricing-price">200 ₽ / 55 мин</span>
         </div>
       </div>
-
+ 
       <div class="pricing-card">
         <div class="pricing-card-head">
           <span class="pricing-card-title">Педагог и взрослый</span>
@@ -466,7 +457,7 @@ footer { background: var(--brown-dk); padding: 32px 0; }
           <span class="pricing-price">250 ₽ / 55 мин</span>
         </div>
       </div>
-
+ 
       <div class="pricing-card">
         <div class="pricing-card-head">
           <span class="pricing-card-title">Педагог и 2+ ученика</span>
@@ -484,11 +475,11 @@ footer { background: var(--brown-dk); padding: 32px 0; }
           <span class="pricing-price">300 ₽ / 55 мин</span>
         </div>
       </div>
-
+ 
     </div>
   </div>
 </section>
-
+ 
 <!-- ВИДЖЕТ -->
 <section class="booking" id="booking">
   <div class="container">
@@ -502,7 +493,7 @@ footer { background: var(--brown-dk); padding: 32px 0; }
     </div>
   </div>
 </section>
-
+ 
 <!-- АДРЕС -->
 <section class="address-section" id="map">
   <div class="container">
@@ -515,7 +506,7 @@ footer { background: var(--brown-dk); padding: 32px 0; }
     </div>
   </div>
 </section>
-
+ 
 <!-- КОНТАКТЫ -->
 <section class="contacts" id="contacts">
   <div class="container">
@@ -577,10 +568,11 @@ footer { background: var(--brown-dk); padding: 32px 0; }
     </div>
   </div>
 </section>
-
+ 
+<!-- FOOTER — виден на мобиле, два столбика на десктопе -->
 <footer class="site-footer">
   <div class="footer-inner container">
-
+ 
     <div class="footer-col">
       <span class="footer-title">Навигация</span>
       <a href="/repetitoriy1/">Главная</a>
@@ -590,15 +582,17 @@ footer { background: var(--brown-dk); padding: 32px 0; }
       <a href="/repetitoriy1/instrument-rental">Аренда инструментов</a>
       <a href="/repetitoriy1/rental">Аренда классов</a>
     </div>
-
+ 
     <div class="footer-col">
       <span class="footer-title">Репетиторий №1</span>
-      <span class="footer-copy">© 2022 · Санкт-Петербург</span>
+      <span class="footer-copy">Санкт-Петербург, Прилукская ул. 21–23, лит. В</span>
+      <span class="footer-copy">10:00 — 22:00</span>
+      <span class="footer-copy" style="margin-top: 12px;">© 2022 · Репетиторий №1</span>
     </div>
-
+ 
   </div>
 </footer>
-
+ 
 <script>
 function submitForm() {
   const name = document.getElementById('f-name').value.trim();
@@ -609,20 +603,17 @@ function submitForm() {
   document.getElementById('f-contact').value = '';
   document.getElementById('f-msg').value = '';
 }
-</script>
-
-<!-- ВТОРОЙ СКРИПТ ОТДЕЛЬНО -->
-<script>
+ 
 // Бургер
 const burger = document.getElementById('burger');
 const mobileNav = document.getElementById('mobileNav');
-
+ 
 burger.addEventListener('click', () => {
   const open = mobileNav.classList.toggle('open');
   burger.classList.toggle('open', open);
   burger.setAttribute('aria-expanded', open);
 });
-
+ 
 mobileNav.querySelectorAll('a').forEach(a => {
   a.addEventListener('click', () => {
     mobileNav.classList.remove('open');
@@ -630,19 +621,18 @@ mobileNav.querySelectorAll('a').forEach(a => {
     burger.setAttribute('aria-expanded', false);
   });
 });
-
+ 
 // Кнопка наверх
 const btn = document.getElementById('backToTop');
-
+ 
 window.addEventListener('scroll', () => {
   btn.classList.toggle('visible', window.scrollY > 400);
 });
-
+ 
 btn.addEventListener('click', () => {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 });
 </script>
+ 
+</body></document_content>
 
-  
-</body>
-</html>
