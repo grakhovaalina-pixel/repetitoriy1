@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Занятия — Репетиторий №1</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --cream: #FAF6F0; --beige: #F0E8DA; --sand: #E0CDB5;
+  --brown-lt: #C9B49A; --brown: #7C6A55; --brown-dk: #3E2F1E;
+  --text: #2A1F14; --muted: #7A6552;
+}
+html { scroll-behavior: smooth; }
+body { background: var(--cream); color: var(--text); font-family: "Outfit", sans-serif; font-weight: 300; line-height: 1.7; }
+h1, h2, h3 { font-family: "Playfair Display", serif; font-weight: 400; line-height: 1.1; }
+.container { max-width: 1080px; margin: 0 auto; padding: 0 36px; }
+
+/* HEADER */
+header { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(250,246,240,0.94); backdrop-filter: blur(10px); border-bottom: 1px solid var(--sand); }
+.header-inner { max-width: 1080px; margin: 0 auto; padding: 0 36px; height: 62px; display: flex; align-items: center; justify-content: space-between; }
+.logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.logo-owl { height: 36px; width: auto; object-fit: contain; }
+.logo-text { font-family: "Playfair Display", serif; font-size: 19px; font-weight: 500; color: var(--brown-dk); letter-spacing: 0.01em; }
+nav { display: flex; gap: 28px; align-items: center; }
+nav a { text-decoration: none; font-size: 13px; color: var(--muted); letter-spacing: 0.04em; transition: color 0.2s; }
+nav a:hover { color: var(--brown-dk); }
+.nav-cta { background: var(--brown-dk) !important; color: var(--cream) !important; padding: 8px 18px; border-radius: 3px; }
+.nav-cta:hover { background: var(--brown) !important; }
+
+/* HERO */
+.hero { padding-top: 62px; min-height: 52vh; display: flex; flex-direction: column; justify-content: flex-end; background: var(--cream); }
+.hero-content { padding: 72px 0 80px; }
+.hero-label { font-size: 11px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--brown-lt); margin-bottom: 24px; }
+.hero-title { font-size: clamp(38px, 5.5vw, 76px); font-weight: 400; color: var(--brown-dk); line-height: 1.05; margin-bottom: 24px; animation: fadeUp 0.7s ease both; }
+.hero-sub { font-size: clamp(15px, 1.6vw, 17px); color: var(--muted); font-weight: 300; max-width: 500px; line-height: 1.65; animation: fadeUp 0.7s 0.15s ease both; }
+
+/* INTRO */
+.intro { background: var(--cream); padding: 72px 0; border-bottom: 1px solid var(--sand); }
+.intro-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
+.intro-lead { padding-right: 56px; border-right: 1px solid var(--sand); display: flex; align-items: center; }
+.intro-lead p { font-size: clamp(20px, 2.2vw, 26px); font-weight: 300; color: var(--brown-dk); line-height: 1.55; font-family: "Playfair Display", serif; }
+.intro-secondary { padding-left: 56px; display: flex; flex-direction: column; gap: 0; justify-content: center; }
+.intro-secondary p { font-size: 15px; font-weight: 300; color: var(--muted); line-height: 1.8; padding: 24px 0; border-bottom: 1px solid var(--sand); }
+.intro-secondary p:first-child { border-top: 1px solid var(--sand); }
+
+/* PRICING */
+.pricing { background: var(--brown-dk); padding: 88px 0; border-bottom: 1px solid rgba(255,255,255,0.08); }
+.pricing h2 { font-size: clamp(28px, 3.5vw, 44px); color: var(--cream); margin-bottom: 52px; }
+.pricing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.pricing-card { border-radius: 4px; overflow: hidden; background: var(--cream); }
+.pricing-card-head { padding: 28px 32px 24px; border-bottom: 1px solid var(--sand); }
+.pricing-card-title { font-family: "Playfair Display", serif; font-size: 20px; font-weight: 400; color: var(--brown-dk); line-height: 1.2; }
+.pricing-row { display: flex; justify-content: space-between; align-items: baseline; padding: 14px 32px; border-bottom: 1px solid var(--sand); gap: 12px; }
+.pricing-row.last { border-bottom: none; padding-bottom: 28px; }
+.pricing-label { font-size: 13px; font-weight: 300; color: var(--muted); }
+.pricing-price { font-family: "Playfair Display", serif; font-size: 15px; color: var(--brown-dk); white-space: nowrap; }
+
+/* TEACHERS */
+.teachers { background: var(--beige); padding: 88px 0; border-bottom: 1px solid var(--sand); }
+.teachers h2 { font-size: clamp(28px, 3.5vw, 44px); color: var(--brown-dk); margin-bottom: 52px; }
+.teacher-card { display: grid; grid-template-columns: 280px 1fr; gap: 0; border: 1px solid var(--sand); border-radius: 4px; overflow: hidden; margin-bottom: 20px; background: var(--cream); }
+.teacher-card:last-child { margin-bottom: 0; }
+.teacher-photo { background: var(--beige); border-right: 1px solid var(--sand); overflow: hidden; min-height: 240px; }
+.teacher-photo-inner { width: 100%; height: 100%; min-height: 240px; }
+.teacher-photo-inner img { object-position: top; }
+.teacher-photo-inner svg { width: 56px; height: 56px; color: var(--brown-lt); }
+.teacher-photo-inner span { font-family: "Playfair Display", serif; font-size: 12px; font-style: italic; color: var(--brown-lt); }
+.teacher-body { padding: 36px 48px; display: flex; flex-direction: column; gap: 14px; justify-content: center; }
+.teacher-accent { font-family: "Playfair Display", serif; font-size: clamp(16px, 1.6vw, 19px); font-weight: 400; color: var(--brown-dk); line-height: 1.45; }
+.teacher-name { font-size: 11px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--brown-lt); }
+.teacher-meta { font-size: 13px; font-weight: 300; color: var(--muted); line-height: 1.6; padding-top: 2px; }
+.teacher-divider { border: none; border-top: 1px solid var(--sand); margin: 2px 0; }
+.teacher-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.teacher-tag { font-size: 12px; font-weight: 300; color: var(--brown); background: var(--beige); border: 1px solid var(--sand); border-radius: 2px; padding: 4px 10px; white-space: nowrap; }
+.teacher-btn { display: inline-block; margin-top: 4px; padding: 11px 24px; border-radius: 3px; text-decoration: none; font-family: "Outfit", sans-serif; font-size: 12px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; background: var(--brown-dk); color: var(--cream); transition: background 0.2s; align-self: flex-start; }
+.teacher-btn:hover { background: var(--brown); }
+
+/* CONTACTS */
+.contacts { background: var(--cream); padding: 88px 0; }
+.contacts-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+.contacts h2 { font-size: clamp(28px, 3.5vw, 44px); color: var(--brown-dk); margin-bottom: 40px; }
+.contact-block { display: flex; flex-direction: column; }
+.contact-row { display: flex; flex-direction: column; gap: 6px; padding: 18px 0; border-bottom: 1px solid var(--sand); }
+.contact-row:first-child { border-top: 1px solid var(--sand); }
+.contact-label { font-size: 10px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--brown-lt); }
+.contact-value { font-size: 15px; font-weight: 300; color: var(--text); line-height: 1.6; }
+.contact-phones { display: flex; flex-direction: column; gap: 2px; }
+.contact-link { display: inline-flex; align-items: center; gap: 9px; text-decoration: none; color: var(--text); font-size: 15px; font-weight: 300; transition: color 0.2s; }
+.contact-link:hover { color: var(--brown); }
+.contact-link svg { color: var(--brown-lt); flex-shrink: 0; }
+.contact-socials { display: flex; flex-direction: column; gap: 12px; }
+.form-row { display: flex; flex-direction: column; gap: 4px; margin-bottom: 16px; }
+.form-row label { font-size: 10px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--brown-lt); }
+.form-row input, .form-row textarea { background: var(--beige); border: 1px solid var(--sand); border-radius: 3px; padding: 12px 14px; font-family: "Outfit", sans-serif; font-size: 15px; font-weight: 300; color: var(--text); outline: none; transition: border-color 0.2s; width: 100%; }
+.form-row input:focus, .form-row textarea:focus { border-color: var(--brown-lt); }
+.form-row textarea { resize: vertical; min-height: 110px; }
+.form-submit { margin-top: 8px; background: var(--brown-dk); color: var(--cream); padding: 14px 32px; border: none; border-radius: 3px; font-family: "Outfit", sans-serif; font-size: 13px; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; transition: background 0.2s; width: 100%; }
+.form-submit:hover { background: var(--brown); }
+.form-success { display: none; margin-top: 14px; padding: 14px 18px; background: var(--beige); border-radius: 3px; border: 1px solid var(--sand); font-size: 14px; color: var(--muted); text-align: center; font-family: "Playfair Display", serif; font-style: italic; }
+
+/* ADDRESS */
+.address-section { background: var(--beige); padding: 88px 0; border-bottom: 1px solid var(--sand); }
+.address-section h2 { font-size: clamp(28px, 3.5vw, 44px); color: var(--brown-dk); margin-bottom: 8px; }
+.address-sub { font-family: "Playfair Display", serif; font-size: 18px; font-style: italic; color: var(--muted); margin-bottom: 36px; }
+.map-wrap { border-radius: 4px; overflow: hidden; height: 420px; }
+.map-wrap iframe { width: 100%; height: 100%; border: none; display: block; }
+
+/* FOOTER */
+footer { background: var(--brown-dk); padding: 32px 0; }
+.footer-inner { display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+.footer-logo { display: flex; align-items: center; gap: 10px; }
+.footer-owl { height: 28px; width: auto; object-fit: contain; }
+.footer-name { font-family: "Playfair Display", serif; font-size: 17px; color: var(--cream); opacity: 0.45; }
+.footer-copy { font-size: 12px; color: var(--brown-lt); opacity: 0.4; }
+
+@keyframes fadeUp { from { opacity:0; transform:translateY(18px) } to { opacity:1; transform:translateY(0) } }
+
+@media (max-width: 820px) {
+  .container, .header-inner { padding-left: 20px; padding-right: 20px; }
+  nav { display: none; }
+  .hero-content { padding: 52px 0 60px; }
+  .intro-layout { grid-template-columns: 1fr; }
+  .intro-lead { padding-right: 0; border-right: none; border-bottom: 1px solid var(--sand); padding-bottom: 32px; margin-bottom: 32px; }
+  .intro-secondary { padding-left: 0; }
+  .pricing-grid { grid-template-columns: 1fr; }
+  .teacher-card { grid-template-columns: 1fr; }
+  .teacher-photo { min-height: 180px; border-right: none; border-bottom: 1px solid var(--sand); }
+  .teacher-body { padding: 32px 24px; }
+  .contacts-grid { grid-template-columns: 1fr; gap: 48px; }
+  .map-wrap { height: 300px; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a href="index.html" class="logo">
+      <img src="https://i.ibb.co/5x6xrd2v/image.png" alt="Репетиторий №1" class="logo-owl">
+      <span class="logo-text">Репетиторий №1</span>
+    </a>
+    <nav>
+      <a href="index.html">Главная</a>
+      <a href="students.html">Ученикам</a>
+      <a href="#">Педагогам</a>
+      <a href="instrument-rental.html">Аренда инструментов</a>
+      <a href="rental.html" class="nav-cta">Забронировать класс</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content container">
+    <p class="hero-label">Репетиторий №1</p>
+    <h1 class="hero-title">Индивидуальные занятия<br>с педагогами Репетитория</h1>
+  </div>
+</section>
+
+<!-- INTRO -->
+<section class="intro">
+  <div class="container">
+    <div class="intro-layout">
+      <div class="intro-lead">
+        <p>Занимайтесь с педагогами по фортепиано, скрипке, вокалу и сольфеджио, которые сами выступают на сцене.</p>
+      </div>
+      <div class="intro-secondary">
+        <p>Можно идти по программе музыкального училища или выстроить свой маршрут: для поступления, для себя или чтобы наверстать упущенное.</p>
+        <p>Если нужна разовая помощь — спросите администратора. Мы сами музыканты и можем помочь разобрать сложный фрагмент или объяснить теорию без записи на урок.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing">
+  <div class="container">
+    <h2>Цены</h2>
+    <div class="pricing-grid">
+
+      <div class="pricing-card">
+        <div class="pricing-card-head">
+          <span class="pricing-card-title">По программе училища</span>
+          <p style="font-size:13px;font-weight:300;color:var(--muted);margin-top:8px;line-height:1.5;">Для тех, кто учится по стандартной программе музыкальной школы или училища</p>
+        </div>
+        <div class="pricing-row">
+          <span class="pricing-label">1 занятие</span>
+          <span class="pricing-price">1 200 ₽ / час</span>
+        </div>
+        <div class="pricing-row">
+          <span class="pricing-label">Абонемент 5 занятий</span>
+          <span class="pricing-price">1 100 ₽ / час</span>
+        </div>
+        <div class="pricing-row last">
+          <span class="pricing-label">Абонемент 10 занятий</span>
+          <span class="pricing-price">1 000 ₽ / час</span>
+        </div>
+      </div>
+
+      <div class="pricing-card">
+        <div class="pricing-card-head">
+          <span class="pricing-card-title">По индивидуальному плану</span>
+          <p style="font-size:13px;font-weight:300;color:var(--muted);margin-top:8px;line-height:1.5;">Для взрослых, самоучек и тех, кто хочет заниматься для себя без привязки к программе</p>
+        </div>
+        <div class="pricing-row">
+          <span class="pricing-label">1 занятие</span>
+          <span class="pricing-price">1 500 ₽ / час</span>
+        </div>
+        <div class="pricing-row">
+          <span class="pricing-label">Абонемент 5 занятий</span>
+          <span class="pricing-price">1 400 ₽ / час</span>
+        </div>
+        <div class="pricing-row last">
+          <span class="pricing-label">Абонемент 10 занятий</span>
+          <span class="pricing-price">1 300 ₽ / час</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- TEACHERS -->
+<section class="teachers">
+  <div class="container">
+    <h2>Педагоги</h2>
+
+    <div class="teacher-card">
+      <div class="teacher-photo">
+        <div class="teacher-photo-inner"><img src="https://i.ibb.co/WvnVFVXf/image.jpg" alt="Дженальдина" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
+      </div>
+      <div class="teacher-body">
+        <p class="teacher-accent">Помогает начать с нуля и разобраться, как всё устроено — от инструмента до теории</p>
+        <hr class="teacher-divider">
+        <p class="teacher-name">Дженальдина Журавлева</p>
+        <p class="teacher-meta">Дипломант всероссийских и международных конкурсов · артист ТЮЗа им. Брянцева · действующий музыкант-исполнитель (альт, скрипка) · стаж преподавания 15 лет</p>
+        <div class="teacher-tags">
+          <span class="teacher-tag">Скрипка</span>
+          <span class="teacher-tag">Альт</span>
+          <span class="teacher-tag">Фортепиано</span>
+          <span class="teacher-tag">Сольфеджио</span>
+          <span class="teacher-tag">Теория музыки</span>
+          <span class="teacher-tag">История музыки</span>
+          <span class="teacher-tag">Гармония</span>
+        </div>
+        <a href="#contacts" class="teacher-btn" onclick="setTeacher('Дженальдина Журавлева')">Записаться</a>
+      </div>
+    </div>
+
+    <div class="teacher-card">
+      <div class="teacher-photo">
+        <div class="teacher-photo-inner"><img src="https://i.ibb.co/JFy4ct6K/image.jpg" alt="Кирилл" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
+      </div>
+      <div class="teacher-body">
+        <p class="teacher-accent">Индивидуальная программа под ваш голос и цели — от постановки дыхания до подготовки к конкурсам</p>
+        <hr class="teacher-divider">
+        <p class="teacher-name">Кирилл Шуршин</p>
+        <p class="teacher-meta">Оперный вокалист с 30-летним стажем · стаж преподавания 20 лет · выступал на сценах Ковент-Гардена, Ла Скала и Шатле в составе гастролей Мариинского театра</p>
+        <div class="teacher-tags">
+          <span class="teacher-tag">Академический вокал</span>
+          <span class="teacher-tag">Постановка голоса</span>
+        </div>
+        <a href="#contacts" class="teacher-btn" onclick="setTeacher('Кирилл Шуршин')">Записаться</a>
+      </div>
+    </div>
+
+    <div class="teacher-card">
+      <div class="teacher-photo">
+        <div class="teacher-photo-inner"><img src="https://i.ibb.co/5hZCdHf8/image.jpg" alt="Любовь" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
+      </div>
+      <div class="teacher-body">
+        <p class="teacher-accent">Убеждена: голос есть у каждого. Помогает его найти — детям и взрослым, новичкам и тем, кому когда-то сказали «не дано»</p>
+        <hr class="teacher-divider">
+        <p class="teacher-name">Любовь Журавлева</p>
+        <p class="teacher-meta">Лауреат международных конкурсов · солистка «Петербургской оперетты» · карьера балерины, консерватория, режиссёрское образование в СПбГАТИ · преподаёт с 2000 года</p>
+        <div class="teacher-tags">
+          <span class="teacher-tag">Академический вокал</span>
+          <span class="teacher-tag">Постановка голоса</span>
+          <span class="teacher-tag">Сценическая речь</span>
+          <span class="teacher-tag">Актёрское мастерство</span>
+          <span class="teacher-tag">Фортепиано</span>
+        </div>
+        <a href="#contacts" class="teacher-btn" onclick="setTeacher('Любовь Журавлева')">Записаться</a>
+      </div>
+    </div>
+
+    <div class="teacher-card">
+      <div class="teacher-photo">
+        <div class="teacher-photo-inner"><img src="https://i.ibb.co/VchN44Py/image.jpg" alt="Елена" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
+      </div>
+      <div class="teacher-body">
+        <p class="teacher-accent">Соединяет технику пения с актёрским и сценическим мастерством — работает и с новичками, и с опытными вокалистами</p>
+        <hr class="teacher-divider">
+        <p class="teacher-name">Елена Татьянок</p>
+        <p class="teacher-meta">Лирико-драматическое сопрано · лауреат и дипломант всероссийских и международных конкурсов · ведущая солистка «Петербургской оперетты» · выступала с Губернаторским оркестром и оркестром «Таврический»</p>
+        <div class="teacher-tags">
+          <span class="teacher-tag">Сольное пение</span>
+          <span class="teacher-tag">Вокальный ансамбль</span>
+        </div>
+        <a href="#contacts" class="teacher-btn" onclick="setTeacher('Елена Татьянок')">Записаться</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ADDRESS -->
+<section class="address-section" id="map">
+  <div class="container">
+    <h2>Как нас найти</h2>
+    <p class="address-sub">7 минут от метро «Обводный канал» · Прилукская ул. 21–23, лит. В</p>
+    <div class="map-wrap">
+      <iframe
+        src="https://yandex.ru/map-widget/v1/?ll=30.341290%2C59.908500&z=16&pt=30.341290,59.908500,pm2dbl&text=%D0%9F%D1%80%D0%B8%D0%BB%D1%83%D0%BA%D1%81%D0%BA%D0%B0%D1%8F+21-23+%D0%BB%D0%B8%D1%82.+%D0%92%2C+%D0%A1%D0%B0%D0%BD%D0%BA%D1%82-%D0%9F%D0%B5%D1%82%D0%B5%D1%80%D0%B1%D1%83%D1%80%D0%B3"
+        title="Карта" loading="lazy"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTS + FORM -->
+<section class="contacts" id="contacts">
+  <div class="container">
+    <div class="contacts-grid">
+      <div>
+        <h2>Контактная информация</h2>
+        <div class="contact-block">
+          <div class="contact-row">
+            <span class="contact-label">Адрес</span>
+            <span class="contact-value">Санкт-Петербург, Прилукская ул. 21–23, литера В</span>
+          </div>
+          <div class="contact-row">
+            <span class="contact-label">Часы работы</span>
+            <span class="contact-value">10:00 — 22:00</span>
+          </div>
+          <div class="contact-row">
+            <span class="contact-label">Позвонить нам</span>
+            <div class="contact-phones contact-value">
+              <a href="tel:+79062561983" class="contact-link">+7 (906) 256-19-83</a>
+              <a href="tel:+79119479617" class="contact-link">+7 (911) 947-96-17</a>
+            </div>
+          </div>
+          <div class="contact-row">
+            <span class="contact-label">Написать нам</span>
+            <div class="contact-socials">
+              <a href="https://t.me/+79062561983" class="contact-link" target="_blank" rel="noopener">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21.2 4.8L2.8 11.6c-1.1.4-1.1 1-.2 1.3l4.6 1.4 1.8 5.5c.2.6.5.8.9.8.3 0 .5-.1.8-.4l2.7-2.6 5.6 4.1c1 .6 1.7.3 2-1L22 5.8c.4-1.5-.5-2.2-1.8-1Z"/></svg>
+                Telegram
+              </a>
+              <a href="https://vk.com/classicrepetitory" class="contact-link" target="_blank" rel="noopener">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10S2 17.523 2 12zm10.5 4.5h1.38c.394 0 .59-.204.59-.59v-2.12c0-.365.163-.546.49-.546.26 0 .518.16.773.48l1.63 2.388c.163.24.356.388.58.388h1.38c.395 0 .59-.17.59-.51 0-.163-.077-.346-.23-.547l-1.512-2.064c-.144-.182-.214-.32-.214-.413 0-.09.05-.198.154-.327l1.438-1.774c.153-.192.23-.365.23-.52 0-.317-.196-.476-.59-.476H17.5c-.395 0-.636.173-.724.52l-1.324 1.756c-.27.356-.53.534-.778.534-.316 0-.474-.183-.474-.547V8.09c0-.394-.195-.59-.59-.59H12.5c-.384 0-.577.186-.577.556 0 .26.173.49.52.692.288.163.432.394.432.692v3.76c0 .288-.15.432-.45.432-.26 0-.567-.173-.923-.52L9.78 11.3c-.52-.558-.9-1.264-1.14-2.12-.077-.307-.25-.49-.52-.49H6.74c-.394 0-.59.173-.59.52 0 .192.058.404.174.635 1.178 2.582 2.736 4.463 4.675 5.643.51.308 1.09.515 1.501.515z"/></svg>
+                ВКонтакте
+              </a>
+              <a href="/cdn-cgi/l/email-protection#eb82858d84ab998e9b8e9f829f849992dac5999e" class="contact-link">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
+                <span class="__cf_email__" data-cfemail="3d54535b527d4f584d58495449524f440c134f48">[email&#160;protected]</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <h2>Записаться на занятие</h2>
+        <div class="form-row">
+          <label for="f-name">Имя</label>
+          <input type="text" id="f-name" placeholder="Ваше имя" autocomplete="name">
+        </div>
+        <div class="form-row">
+          <label for="f-contact">Контакт</label>
+          <input type="text" id="f-contact" placeholder="Телефон, Telegram или email">
+        </div>
+        <div class="form-row">
+          <label for="f-msg">Сообщение</label>
+          <textarea id="f-msg" placeholder="Какая дисциплина вас интересует?"></textarea>
+        </div>
+        <button type="button" class="form-submit" onclick="submitForm()">Отправить</button>
+        <div class="form-success" id="formSuccess">Спасибо! Мы свяжемся с вами в ближайшее время.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-logo">
+        <img src="https://i.ibb.co/cKSy1N9b/image.png" alt="" class="footer-owl">
+        <span class="footer-name">Репетиторий №1</span>
+      </div>
+      <span class="footer-copy">© 2025 Репетиторий №1 · Санкт-Петербург</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+function setTeacher(name) {
+  const msg = document.getElementById('f-msg');
+  if (msg) msg.value = 'Хочу записаться к ' + name;
+}
+function submitForm() {
+  const name = document.getElementById('f-name').value.trim();
+  const contact = document.getElementById('f-contact').value.trim();
+  if (!name || !contact) {
+    alert('Пожалуйста, заполните имя и контакт.');
+    return;
