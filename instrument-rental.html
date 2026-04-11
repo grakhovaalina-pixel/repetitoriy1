@@ -25,26 +25,99 @@ header { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: r
 .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
 .logo-owl { height: 36px; width: auto; object-fit: contain; }
 .logo-text { font-family: "Playfair Display", serif; font-size: 19px; font-weight: 500; color: var(--brown-dk); letter-spacing: 0.01em; }
-nav { display: flex; gap: 28px; align-items: center; }
-nav a { text-decoration: none; font-size: 13px; color: var(--muted); letter-spacing: 0.04em; transition: color 0.2s; }
-nav a:hover { color: var(--brown-dk); }
+nav.main-nav { display: flex; gap: 28px; align-items: center; }
+nav.main-nav a { text-decoration: none; font-size: 13px; color: var(--muted); letter-spacing: 0.04em; transition: color 0.2s; }
+nav.main-nav a:hover { color: var(--brown-dk); }
 .nav-cta { background: var(--brown-dk) !important; color: var(--cream) !important; padding: 8px 18px; border-radius: 3px; }
 .nav-cta:hover { background: var(--brown) !important; }
 
-/* HERO — как на странице Ученикам */
+/* БУРГЕР */
+.burger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  z-index: 200;
+}
+.burger span {
+  display: block;
+  width: 24px;
+  height: 1.5px;
+  background: var(--brown-dk);
+  transition: transform 0.25s, opacity 0.25s;
+  transform-origin: center;
+}
+.burger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.burger.open span:nth-child(2) { opacity: 0; }
+.burger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+/* МОБИЛЬНОЕ МЕНЮ */
+.mobile-nav {
+  display: none;
+  position: fixed;
+  top: 62px;
+  left: 0;
+  right: 0;
+  background: var(--beige);
+  border-bottom: 2px solid var(--sand);
+  z-index: 99;
+  flex-direction: column;
+  padding: 8px 0 16px;
+  box-shadow: 0 8px 24px rgba(62,47,30,0.10);
+}
+.mobile-nav.open { display: flex; }
+.mobile-nav a {
+  padding: 14px 24px;
+  font-size: 15px;
+  font-weight: 300;
+  color: var(--brown-dk);
+  text-decoration: none;
+  border-bottom: 1px solid var(--sand);
+  transition: color 0.2s, background 0.2s;
+}
+.mobile-nav a:last-child { border-bottom: none; }
+.mobile-nav a:hover { color: var(--brown); background: rgba(224,205,181,0.4); }
+
+/* КНОПКА НАВЕРХ */
+.back-to-top {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--brown-dk);
+  color: var(--cream);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s, background 0.2s;
+  z-index: 150;
+}
+.back-to-top.visible { opacity: 1; pointer-events: auto; }
+.back-to-top:hover { background: var(--brown); }
+
+/* HERO */
 .hero { padding-top: 62px; min-height: 52vh; display: flex; flex-direction: column; justify-content: flex-end; background: var(--cream); border-bottom: 1px solid var(--sand); }
 .hero-content { padding: 72px 36px 80px; max-width: 1080px; margin: 0 auto; width: 100%; }
 .hero-title { font-size: clamp(38px, 5.5vw, 76px); font-weight: 400; color: var(--brown-dk); line-height: 1.05; margin-bottom: 24px; animation: fadeUp 0.7s ease both; }
 .hero-sub { font-size: clamp(15px, 1.6vw, 17px); color: var(--muted); font-weight: 300; max-width: 600px; line-height: 1.65; animation: fadeUp 0.7s 0.15s ease both; }
 
-/* INSTRUMENTS — кремовый фон */
+/* INSTRUMENTS */
 .instruments { background: var(--cream); padding: 88px 0; border-bottom: 1px solid var(--sand); }
 .instruments h2 { font-size: clamp(28px, 3.5vw, 44px); color: var(--brown-dk); margin-bottom: 52px; }
 
 .instrument-card { display: grid; grid-template-columns: 320px 1fr; gap: 0; border: 1px solid var(--sand); border-radius: 4px; overflow: hidden; margin-bottom: 20px; background: var(--cream); }
 .instrument-card:last-child { margin-bottom: 0; }
 
-/* Left panel — бежевый */
 .instr-left { background: var(--beige); padding: 48px 40px; display: flex; flex-direction: column; gap: 24px; justify-content: space-between; border-right: 1px solid var(--sand); }
 .instr-left-top { display: flex; flex-direction: column; gap: 16px; }
 .instr-left h3 { font-size: clamp(20px, 2vw, 26px); color: var(--brown-dk); line-height: 1.2; }
@@ -59,7 +132,6 @@ nav a:hover { color: var(--brown-dk); }
 .instrument-btn:hover { color: var(--brown-dk); gap: 12px; }
 .instrument-btn .btn-arrow { font-size: 16px; line-height: 1; }
 
-/* Right pricing panel */
 .instr-right { padding: 48px 48px; display: flex; flex-direction: column; justify-content: center; }
 .instr-right h4 { font-size: 10px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--brown-lt); margin-bottom: 0; }
 .price-list { display: flex; flex-direction: column; margin-top: 0; }
@@ -100,24 +172,27 @@ nav a:hover { color: var(--brown-dk); }
 .map-wrap iframe { width: 100%; height: 100%; border: none; display: block; }
 
 /* FOOTER */
-footer { background: var(--brown-dk); padding: 32px 0; }
-.footer-inner { display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
-.footer-logo { display: flex; align-items: center; gap: 10px; }
-.footer-owl { height: 28px; width: auto; object-fit: contain; }
-.footer-name { font-family: "Playfair Display", serif; font-size: 17px; color: var(--cream); opacity: 0.45; }
-.footer-copy { font-size: 12px; color: var(--brown-lt); opacity: 0.4; }
+.site-footer { background: var(--brown-dk); padding: 40px 0; }
+.footer-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 40px 60px; align-items: start; }
+.footer-col { display: flex; flex-direction: column; gap: 10px; }
+.footer-title { font-family: "Playfair Display", serif; font-size: 16px; color: var(--cream); margin-bottom: 6px; }
+.footer-col a { text-decoration: none; color: var(--brown-lt); font-size: 13px; transition: color 0.2s; }
+.footer-col a:hover { color: var(--cream); }
+.footer-copy { font-size: 12px; color: var(--brown-lt); opacity: 0.7; }
 
 @keyframes fadeUp { from { opacity:0; transform:translateY(18px) } to { opacity:1; transform:translateY(0) } }
 
 @media (max-width: 820px) {
   .container, .header-inner { padding-left: 20px; padding-right: 20px; }
-  nav { display: none; }
+  nav.main-nav { display: none; }
+  .burger { display: flex; }
   .hero-content { padding: 52px 20px 60px; }
   .instrument-card { grid-template-columns: 1fr; }
   .instr-left { border-right: none; border-bottom: 1px solid var(--sand); padding: 32px 24px; }
   .instr-right { padding: 32px 24px; }
   .contacts-grid { grid-template-columns: 1fr; gap: 48px; }
   .map-wrap { height: 300px; }
+  .footer-inner { grid-template-columns: 1fr; gap: 32px; }
 }
 </style>
 </head>
@@ -125,20 +200,38 @@ footer { background: var(--brown-dk); padding: 32px 0; }
 
 <header>
   <div class="header-inner">
-    <a href="index.html" class="logo">
+    <a href="/repetitoriy1/" class="logo">
       <img src="https://i.ibb.co/5x6xrd2v/image.png" alt="Репетиторий №1" class="logo-owl">
       <span class="logo-text">Репетиторий&nbsp;№&nbsp;1</span>
     </a>
-    <nav>
-      <a href="index.html">Главная</a>
-      <a href="students.html">Ученикам</a>
-      <a href="#">Педагогам</a>
-      <a href="rental.html">Аренда классов</a>
-      <a href="instrument-rental.html">Аренда инструментов</a>
-      <a href="#contacts" class="nav-cta">Спросить об аренде</a>
+    <nav class="main-nav">
+      <a href="/repetitoriy1/">Главная</a>
+      <a href="/repetitoriy1/students">Ученикам</a>
+      <a href="/repetitoriy1/teachers">Педагогам</a>
+      <a href="/repetitoriy1/cours">Актёрское мастерство</a>
+      <a href="/repetitoriy1/rental" class="nav-cta">Забронировать класс</a>
     </nav>
+    <button class="burger" id="burger" aria-label="Меню" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </header>
+
+<!-- МОБИЛЬНОЕ МЕНЮ -->
+<div class="mobile-nav" id="mobileNav">
+  <a href="/repetitoriy1/">Главная</a>
+  <a href="/repetitoriy1/teachers">Педагогам</a>
+  <a href="/repetitoriy1/students">Ученикам</a>
+  <a href="/repetitoriy1/individual">Индивидуальные занятия</a>
+  <a href="/repetitoriy1/instrument-rental">Аренда инструментов</a>
+  <a href="/repetitoriy1/cours">Актёрское мастерство</a>
+  <a href="/repetitoriy1/rental">Аренда классов</a>
+</div>
+
+<!-- КНОПКА НАВЕРХ -->
+<button class="back-to-top" id="backToTop" aria-label="Наверх">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15l-6-6-6 6"/></svg>
+</button>
 
 <!-- HERO -->
 <section class="hero">
@@ -395,15 +488,28 @@ footer { background: var(--brown-dk); padding: 32px 0; }
   </div>
 </section>
 
-<footer>
-  <div class="container">
-    <div class="footer-inner">
-      <div class="footer-logo">
-        <img src="https://i.ibb.co/cKSy1N9b/image.png" alt="" class="footer-owl">
-        <span class="footer-name">Репетиторий №1</span>
-      </div>
-      <span class="footer-copy">© 2025 Репетиторий №1 · Санкт-Петербург</span>
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-inner container">
+
+    <div class="footer-col">
+      <span class="footer-title">Навигация</span>
+      <a href="/repetitoriy1/">Главная</a>
+      <a href="/repetitoriy1/students">Ученикам</a>
+      <a href="/repetitoriy1/teachers">Педагогам</a>
+      <a href="/repetitoriy1/individual">Индивидуальные занятия</a>
+      <a href="/repetitoriy1/instrument-rental">Аренда инструментов</a>
+      <a href="/repetitoriy1/cours">Актёрское мастерство</a>
+      <a href="/repetitoriy1/rental">Аренда классов</a>
     </div>
+
+    <div class="footer-col">
+      <span class="footer-title">Репетиторий №1</span>
+      <span class="footer-copy">Санкт-Петербург, Прилукская ул. 21–23, лит. В</span>
+      <span class="footer-copy">10:00 — 22:00</span>
+      <span class="footer-copy" style="margin-top: 12px;">© 2022 · Репетиторий №1</span>
+    </div>
+
   </div>
 </footer>
 
@@ -417,6 +523,35 @@ function submitForm() {
   document.getElementById('f-contact').value = '';
   document.getElementById('f-msg').value = '';
 }
+
+// Бургер
+const burger = document.getElementById('burger');
+const mobileNav = document.getElementById('mobileNav');
+
+burger.addEventListener('click', () => {
+  const open = mobileNav.classList.toggle('open');
+  burger.classList.toggle('open', open);
+  burger.setAttribute('aria-expanded', open);
+});
+
+mobileNav.querySelectorAll('a').forEach(a => {
+  a.addEventListener('click', () => {
+    mobileNav.classList.remove('open');
+    burger.classList.remove('open');
+    burger.setAttribute('aria-expanded', false);
+  });
+});
+
+// Кнопка наверх
+const btn = document.getElementById('backToTop');
+
+window.addEventListener('scroll', () => {
+  btn.classList.toggle('visible', window.scrollY > 400);
+});
+
+btn.addEventListener('click', () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
 </script>
 </body>
 </html>
