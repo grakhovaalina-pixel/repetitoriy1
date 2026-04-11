@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Аренда инструментов — Репетиторий №1</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --cream: #FAF6F0; --beige: #F0E8DA; --sand: #E0CDB5;
+  --brown-lt: #C9B49A; --brown: #7C6A55; --brown-dk: #3E2F1E;
+  --text: #2A1F14; --muted: #7A6552;
+}
+html { scroll-behavior: smooth; }
+body { background: var(--cream); color: var(--text); font-family: "Outfit", sans-serif; font-weight: 300; line-height: 1.7; }
+h1, h2, h3 { font-family: "Playfair Display", serif; font-weight: 400; line-height: 1.1; }
+.container { max-width: 1080px; margin: 0 auto; padding: 0 36px; }
+
+/* HEADER */
+header { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(250,246,240,0.94); backdrop-filter: blur(10px); border-bottom: 1px solid var(--sand); }
+.header-inner { max-width: 1080px; margin: 0 auto; padding: 0 36px; height: 62px; display: flex; align-items: center; justify-content: space-between; }
+.logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.logo-owl { height: 36px; width: auto; object-fit: contain; }
+.logo-text { font-family: "Playfair Display", serif; font-size: 19px; font-weight: 500; color: var(--brown-dk); letter-spacing: 0.01em; }
+nav { display: flex; gap: 28px; align-items: center; }
+nav a { text-decoration: none; font-size: 13px; color: var(--muted); letter-spacing: 0.04em; transition: color 0.2s; }
+nav a:hover { color: var(--brown-dk); }
+.nav-cta { background: var(--brown-dk) !important; color: var(--cream) !important; padding: 8px 18px; border-radius: 3px; }
+.nav-cta:hover { background: var(--brown) !important; }
+
+/* 1. HERO */
+.hero { padding-top: 62px; background: var(--cream); border-bottom: 1px solid var(--sand); }
+.hero-content { padding: 80px 0 88px; }
+.hero-label { font-size: 11px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--brown-lt); margin-bottom: 24px; }
+.hero-title { font-size: clamp(36px, 5vw, 68px); font-weight: 400; color: var(--brown-dk); line-height: 1.05; margin-bottom: 0; animation: fadeUp 0.7s ease both; }
+
+/* 2. INTRO TEXT */
+.intro { background: var(--cream); padding: 72px 0; border-bottom: 1px solid var(--sand); }
+.intro-text { font-size: 16px; font-weight: 300; color: var(--text); line-height: 1.85; max-width: 720px; }
+
+/* 3. INSTRUMENTS */
+.instruments { background: var(--beige); padding: 88px 0; border-bottom: 1px solid var(--sand); }
+.instruments h2 { font-size: clamp(28px, 3.5vw, 44px); color: var(--brown-dk); margin-bottom: 52px; }
+
+/* New card layout: fixed left panel (identity) + right pricing grid */
+.instrument-card { display: grid; grid-template-columns: 320px 1fr; gap: 0; border: 1px solid var(--sand); border-radius: 4px; overflow: hidden; margin-bottom: 20px; background: var(--cream); }
+.instrument-card:last-child { margin-bottom: 0; }
+
+/* Left panel */
+.instr-left { background: var(--beige); padding: 48px 40px; display: flex; flex-direction: column; gap: 24px; justify-content: space-between; border-right: 1px solid var(--sand); }
+.instr-left-top { display: flex; flex-direction: column; gap: 16px; }
+.instrument-number { font-size: 11px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--brown-lt); }
+.instr-left h3 { font-size: clamp(20px, 2vw, 26px); color: var(--brown-dk); line-height: 1.2; }
+.instr-icon { color: var(--brown-lt); }
+.instr-icon svg { width: 52px; height: 52px; }
+.instr-details { display: flex; flex-direction: column; gap: 0; }
+.instr-detail-row { display: flex; gap: 10px; align-items: baseline; padding: 8px 0; border-bottom: 1px solid var(--sand); font-size: 13px; }
+.instr-detail-row:first-child { border-top: 1px solid var(--sand); }
+.instr-detail-label { font-size: 10px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--brown-lt); min-width: 72px; flex-shrink: 0; padding-top: 1px; }
+.instr-detail-value { color: var(--muted); font-weight: 300; }
+.instrument-btn { display: inline-flex; align-items: center; gap: 8px; text-decoration: none; font-family: "Outfit", sans-serif; font-size: 13px; font-weight: 400; color: var(--brown); transition: gap 0.2s, color 0.2s; align-self: flex-start; }
+.instrument-btn:hover { color: var(--brown-dk); gap: 12px; }
+.instrument-btn .btn-arrow { font-size: 16px; line-height: 1; }
+
+/* Right pricing panel */
+.instr-right { padding: 48px 48px; display: flex; flex-direction: column; justify-content: center; }
+.instr-right h4 { font-size: 10px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--brown-lt); margin-bottom: 0; }
+.price-list { display: flex; flex-direction: column; margin-top: 0; }
+.price-row { display: flex; justify-content: space-between; align-items: baseline; padding: 15px 0; border-bottom: 1px solid var(--sand); gap: 16px; }
+.price-row:first-of-type { border-top: 1px solid var(--sand); margin-top: 16px; }
+.price-label { font-size: 14px; font-weight: 300; color: var(--muted); }
+.price-value { font-family: "Playfair Display", serif; font-size: 17px; color: var(--brown-dk); white-space: nowrap; }
+.clarify { font-style: italic; color: var(--brown-lt); font-size: 14px; font-family: "Playfair Display", serif; }
+
+/* 4. CONTACTS */
+.contacts { background: var(--cream); padding: 88px 0; }
+.contacts-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+.contacts h2 { font-size: clamp(28px, 3.5vw, 44px); color: var(--brown-dk); margin-bottom: 40px; }
+.contact-block { display: flex; flex-direction: column; }
+.contact-row { display: flex; flex-direction: column; gap: 6px; padding: 18px 0; border-bottom: 1px solid var(--sand); }
+.contact-row:first-child { border-top: 1px solid var(--sand); }
+.contact-label { font-size: 10px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--brown-lt); }
+.contact-value { font-size: 15px; font-weight: 300; color: var(--text); line-height: 1.6; }
+.contact-phones { display: flex; flex-direction: column; gap: 2px; }
+.contact-link { display: inline-flex; align-items: center; gap: 9px; text-decoration: none; color: var(--text); font-size: 15px; font-weight: 300; transition: color 0.2s; }
+.contact-link:hover { color: var(--brown); }
+.contact-link svg { color: var(--brown-lt); flex-shrink: 0; }
+.contact-socials { display: flex; flex-direction: column; gap: 12px; }
+.form-row { display: flex; flex-direction: column; gap: 4px; margin-bottom: 16px; }
+.form-row label { font-size: 10px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--brown-lt); }
+.form-row input, .form-row textarea { background: var(--beige); border: 1px solid var(--sand); border-radius: 3px; padding: 12px 14px; font-family: "Outfit", sans-serif; font-size: 15px; font-weight: 300; color: var(--text); outline: none; transition: border-color 0.2s; width: 100%; }
+.form-row input:focus, .form-row textarea:focus { border-color: var(--brown-lt); }
+.form-row textarea { resize: vertical; min-height: 110px; }
+.form-submit { margin-top: 8px; background: var(--brown-dk); color: var(--cream); padding: 14px 32px; border: none; border-radius: 3px; font-family: "Outfit", sans-serif; font-size: 13px; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; transition: background 0.2s; width: 100%; }
+.form-submit:hover { background: var(--brown); }
+.form-success { display: none; margin-top: 14px; padding: 14px 18px; background: var(--beige); border-radius: 3px; border: 1px solid var(--sand); font-size: 14px; color: var(--muted); text-align: center; font-family: "Playfair Display", serif; font-style: italic; }
+
+/* ADDRESS */
+.address-section { background: var(--beige); padding: 88px 0; border-bottom: 1px solid var(--sand); }
+.address-section h2 { font-size: clamp(28px, 3.5vw, 44px); color: var(--brown-dk); margin-bottom: 8px; }
+.address-sub { font-family: "Playfair Display", serif; font-size: 18px; font-style: italic; color: var(--muted); margin-bottom: 36px; }
+.map-wrap { border-radius: 4px; overflow: hidden; height: 420px; }
+.map-wrap iframe { width: 100%; height: 100%; border: none; display: block; }
+
+/* FOOTER */
+footer { background: var(--brown-dk); padding: 32px 0; }
+.footer-inner { display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+.footer-logo { display: flex; align-items: center; gap: 10px; }
+.footer-owl { height: 28px; width: auto; object-fit: contain; }
+.footer-name { font-family: "Playfair Display", serif; font-size: 17px; color: var(--cream); opacity: 0.45; }
+.footer-copy { font-size: 12px; color: var(--brown-lt); opacity: 0.4; }
+
+@keyframes fadeUp { from { opacity:0; transform:translateY(18px) } to { opacity:1; transform:translateY(0) } }
+
+@media (max-width: 820px) {
+  .container, .header-inner { padding-left: 20px; padding-right: 20px; }
+  nav { display: none; }
+  .hero-content { padding: 56px 0 64px; }
+  .instrument-card { grid-template-columns: 1fr; }
+  .instr-left { border-right: none; border-bottom: 1px solid var(--sand); padding: 32px 24px; }
+  .instr-right { padding: 32px 24px; }
+  .contacts-grid { grid-template-columns: 1fr; gap: 48px; }
+  .map-wrap { height: 300px; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a href="index.html" class="logo">
+      <img src="https://i.ibb.co/5x6xrd2v/image.png" alt="Репетиторий №1" class="logo-owl">
+      <span class="logo-text">Репетиторий №1</span>
+    </a>
+    <nav>
+      <a href="index.html">Главная</a>
+      <a href="students.html">Ученикам</a>
+      <a href="#">Педагогам</a>
+      <a href="rental.html">Аренда классов</a>
+      <a href="instrument-rental.html">Аренда инструментов</a>
+      <a href="#contacts" class="nav-cta">Спросить об аренде</a>
+    </nav>
+  </div>
+</header>
+
+<!-- 1. HERO -->
+<section class="hero">
+  <div class="hero-content container">
+    <p class="hero-label">Репетиторий №1</p>
+    <h1 class="hero-title">Аренда инструментов</h1>
+  </div>
+</section>
+
+<!-- 2. INTRO -->
+<section class="intro">
+  <div class="container">
+    <p class="intro-text">
+      Берите инструмент в аренду на день, неделю или несколько месяцев. Все инструменты в отличном состоянии и готовы к работе. При аренде берём залог: 3 000 ₽ на один день, 5 000 ₽ при более длительной аренде.
+    </p>
+  </div>
+</section>
+
+<!-- 3. INSTRUMENTS -->
+<section class="instruments">
+  <div class="container">
+    <h2>Инструменты</h2>
+
+    <!-- Скрипка -->
+    <div class="instrument-card">
+      <div class="instr-left">
+        <div class="instr-left-top">
+          <span class="instrument-number">01</span>
+          <div class="instr-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 3c0 1.5.5 2.5 1.5 3.5L5 12c-1.5 1.5-1.5 4 0 5.5S8.5 19 10 17.5l5.5-5.5C16.5 13 17.5 13.5 19 13.5c1 0 2-.5 2-1.5S19.5 10 19 9.5c-.5-.5-1-1-1-2"/>
+              <circle cx="7.5" cy="16.5" r="1" fill="currentColor" stroke="none"/>
+            </svg>
+          </div>
+          <h3>Скрипка ученическая</h3>
+          <div class="instr-details">
+            <div class="instr-detail-row">
+              <span class="instr-detail-label">Размер</span>
+              <span class="instr-detail-value clarify">уточнить</span>
+            </div>
+            <div class="instr-detail-row">
+              <span class="instr-detail-label">Комплект</span>
+              <span class="instr-detail-value">смычок, футляр</span>
+            </div>
+          </div>
+        </div>
+        <a href="#contacts" class="instrument-btn">Уточнить наличие <span class="btn-arrow">→</span></a>
+      </div>
+      <div class="instr-right">
+        <h4>Стоимость аренды</h4>
+        <div class="price-list">
+          <div class="price-row">
+            <span class="price-label">1 день</span>
+            <span class="price-value">300 ₽</span>
+          </div>
+          <div class="price-row">
+            <span class="price-label">3 дня</span>
+            <span class="price-value">800 ₽</span>
+          </div>
+          <div class="price-row">
+            <span class="price-label">1 неделя</span>
+            <span class="price-value">1 000 ₽</span>
+          </div>
+          <div class="price-row">
+            <span class="price-label">1 месяц</span>
+            <span class="price-value">от 1 200 ₽</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Флейта -->
+    <div class="instrument-card">
+      <div class="instr-left">
+        <div class="instr-left-top">
+          <span class="instrument-number">02</span>
+          <div class="instr-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="3" y1="12" x2="21" y2="12"/>
+              <circle cx="7" cy="12" r="1" fill="currentColor" stroke="none"/>
+              <circle cx="10" cy="12" r="1" fill="currentColor" stroke="none"/>
+              <circle cx="13" cy="12" r="1" fill="currentColor" stroke="none"/>
+              <circle cx="16" cy="12" r="1" fill="currentColor" stroke="none"/>
+              <path d="M3 10v4" stroke-width="1.5"/>
+              <path d="M21 10v4" stroke-width="1.5"/>
+            </svg>
+          </div>
+          <h3>Флейта ученическая</h3>
+          <div class="instr-details">
+            <div class="instr-detail-row">
+              <span class="instr-detail-label">Размер</span>
+              <span class="instr-detail-value clarify">уточнить</span>
+            </div>
+            <div class="instr-detail-row">
+              <span class="instr-detail-label">Комплект</span>
+              <span class="instr-detail-value clarify">уточнить</span>
+            </div>
+          </div>
+        </div>
+        <a href="#contacts" class="instrument-btn">Уточнить наличие <span class="btn-arrow">→</span></a>
+      </div>
+      <div class="instr-right">
+        <h4>Стоимость аренды</h4>
+        <div class="price-list">
+          <div class="price-row">
+            <span class="price-label">1 день</span>
+            <span class="price-value clarify">уточнить</span>
+          </div>
+          <div class="price-row">
+            <span class="price-label">3 дня</span>
+            <span class="price-value clarify">уточнить</span>
+          </div>
+          <div class="price-row">
+            <span class="price-label">1 неделя</span>
+            <span class="price-value clarify">уточнить</span>
+          </div>
+          <div class="price-row">
+            <span class="price-label">1 месяц</span>
+            <span class="price-value clarify">уточнить</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Баян -->
+    <div class="instrument-card">
+      <div class="instr-left">
+        <div class="instr-left-top">
+          <span class="instrument-number">03</span>
+          <div class="instr-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="4" y="3" width="6" height="18" rx="1"/>
+              <rect x="14" y="3" width="6" height="18" rx="1"/>
+              <path d="M10 6h4M10 9h4M10 12h4M10 15h4M10 18h4"/>
+              <line x1="7" y1="7" x2="7" y2="7" stroke-width="2" stroke-linecap="round"/>
+              <line x1="7" y1="11" x2="7" y2="11" stroke-width="2" stroke-linecap="round"/>
+              <line x1="7" y1="15" x2="7" y2="15" stroke-width="2" stroke-linecap="round"/>
+              <line x1="17" y1="7" x2="17" y2="7" stroke-width="2" stroke-linecap="round"/>
+              <line x1="17" y1="11" x2="17" y2="11" stroke-width="2" stroke-linecap="round"/>
+              <line x1="17" y1="15" x2="17" y2="15" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3>Баян «Тула»</h3>
+          <div class="instr-details">
+            <div class="instr-detail-row">
+              <span class="instr-detail-label">Комплект</span>
+              <span class="instr-detail-value clarify">уточнить</span>
+            </div>
+          </div>
+        </div>
+        <a href="#contacts" class="instrument-btn">Уточнить наличие <span class="btn-arrow">→</span></a>
+      </div>
+      <div class="instr-right">
+        <h4>Стоимость аренды</h4>
+        <div class="price-list">
+          <div class="price-row">
+            <span class="price-label">1 день</span>
+            <span class="price-value clarify">уточнить</span>
+          </div>
+          <div class="price-row">
+            <span class="price-label">3 дня</span>
+            <span class="price-value clarify">уточнить</span>
+          </div>
+          <div class="price-row">
+            <span class="price-label">1 неделя</span>
+            <span class="price-value clarify">уточнить</span>
+          </div>
+          <div class="price-row">
+            <span class="price-label">1 месяц</span>
+            <span class="price-value clarify">уточнить</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Подставка для ног -->
+    <div class="instrument-card">
+      <div class="instr-left">
+        <div class="instr-left-top">
+          <span class="instrument-number">04</span>
+          <div class="instr-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="5" y="14" width="14" height="3" rx="1"/>
+              <line x1="8" y1="17" x2="6" y2="21"/>
+              <line x1="16" y1="17" x2="18" y2="21"/>
+              <line x1="12" y1="14" x2="12" y2="7"/>
+              <path d="M8 10c0-2.2 1.8-4 4-4s4 1.8 4 4"/>
+            </svg>
+          </div>
+          <h3>Подставка для ног</h3>
+          <div class="instr-details">
+            <div class="instr-detail-row">
+              <span class="instr-detail-label">Для кого</span>
+              <span class="instr-detail-value">дети-пианисты</span>
+            </div>
+          </div>
+        </div>
+        <a href="#contacts" class="instrument-btn">Уточнить наличие <span class="btn-arrow">→</span></a>
+      </div>
+      <div class="instr-right">
+        <h4>Стоимость аренды</h4>
+        <div class="price-list">
+          <div class="price-row">
+            <span class="price-label">1 месяц</span>
+            <span class="price-value">от 200 ₽</span>
+          </div>
+          <div class="price-row">
+            <span class="price-label">1 год</span>
+            <span class="price-value">2 000 ₽</span>
+          </div>
+          <div class="price-row">
+            <span class="price-label">Долгосрочно</span>
+            <span class="price-value clarify">договорная</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- 4. ADDRESS -->
+<section class="address-section" id="map">
+  <div class="container">
+    <h2>Как нас найти</h2>
+    <p class="address-sub">7 минут от метро «Обводный канал» · Прилукская ул. 21–23, лит. В</p>
+    <div class="map-wrap">
+      <iframe
+        src="https://yandex.ru/map-widget/v1/?ll=30.341290%2C59.908500&z=16&pt=30.341290,59.908500,pm2dbl&text=%D0%9F%D1%80%D0%B8%D0%BB%D1%83%D0%BA%D1%81%D0%BA%D0%B0%D1%8F+21-23+%D0%BB%D0%B8%D1%82.+%D0%92%2C+%D0%A1%D0%B0%D0%BD%D0%BA%D1%82-%D0%9F%D0%B5%D1%82%D0%B5%D1%80%D0%B1%D1%83%D1%80%D0%B3"
+        title="Карта" loading="lazy"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- 5. CONTACTS + FORM -->
+<section class="contacts" id="contacts">
+  <div class="container">
+    <div class="contacts-grid">
+      <div>
+        <h2>Контактная информация</h2>
+        <div class="contact-block">
+          <div class="contact-row">
+            <span class="contact-label">Адрес</span>
+            <span class="contact-value">Санкт-Петербург, Прилукская ул. 21–23, литера В</span>
+          </div>
+          <div class="contact-row">
+            <span class="contact-label">Часы работы</span>
+            <span class="contact-value">10:00 — 22:00</span>
+          </div>
+          <div class="contact-row">
+            <span class="contact-label">Позвонить нам</span>
+            <div class="contact-phones contact-value">
+              <a href="tel:+79062561983" class="contact-link">+7 (906) 256-19-83</a>
+              <a href="tel:+79119479617" class="contact-link">+7 (911) 947-96-17</a>
+            </div>
+          </div>
+          <div class="contact-row">
+            <span class="contact-label">Написать нам</span>
+            <div class="contact-socials">
+              <a href="https://t.me/+79062561983" class="contact-link" target="_blank" rel="noopener">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21.2 4.8L2.8 11.6c-1.1.4-1.1 1-.2 1.3l4.6 1.4 1.8 5.5c.2.6.5.8.9.8.3 0 .5-.1.8-.4l2.7-2.6 5.6 4.1c1 .6 1.7.3 2-1L22 5.8c.4-1.5-.5-2.2-1.8-1Z"/></svg>
+                Telegram
+              </a>
+              <a href="https://vk.com/classicrepetitory" class="contact-link" target="_blank" rel="noopener">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10S2 17.523 2 12zm10.5 4.5h1.38c.394 0 .59-.204.59-.59v-2.12c0-.365.163-.546.49-.546.26 0 .518.16.773.48l1.63 2.388c.163.24.356.388.58.388h1.38c.395 0 .59-.17.59-.51 0-.163-.077-.346-.23-.547l-1.512-2.064c-.144-.182-.214-.32-.214-.413 0-.09.05-.198.154-.327l1.438-1.774c.153-.192.23-.365.23-.52 0-.317-.196-.476-.59-.476H17.5c-.395 0-.636.173-.724.52l-1.324 1.756c-.27.356-.53.534-.778.534-.316 0-.474-.183-.474-.547V8.09c0-.394-.195-.59-.59-.59H12.5c-.384 0-.577.186-.577.556 0 .26.173.49.52.692.288.163.432.394.432.692v3.76c0 .288-.15.432-.45.432-.26 0-.567-.173-.923-.52L9.78 11.3c-.52-.558-.9-1.264-1.14-2.12-.077-.307-.25-.49-.52-.49H6.74c-.394 0-.59.173-.59.52 0 .192.058.404.174.635 1.178 2.582 2.736 4.463 4.675 5.643.51.308 1.09.515 1.501.515z"/></svg>
+                ВКонтакте
+              </a>
+              <a href="/cdn-cgi/l/email-protection#2940474f46695b4c594c5d405d465b5018075b5c" class="contact-link">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
+                <span class="__cf_email__" data-cfemail="8be2e5ede4cbf9eefbeeffe2ffe4f9f2baa5f9fe">[email&#160;protected]</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <h2>Остались вопросы?</h2>
+        <div class="form-row">
+          <label for="f-name">Имя</label>
+          <input type="text" id="f-name" placeholder="Ваше имя" autocomplete="name">
+        </div>
+        <div class="form-row">
+          <label for="f-contact">Контакт</label>
+          <input type="text" id="f-contact" placeholder="Телефон, Telegram или email">
+        </div>
+        <div class="form-row">
+          <label for="f-msg">Сообщение</label>
+          <textarea id="f-msg" placeholder="Какой инструмент вас интересует?"></textarea>
+        </div>
+        <button type="button" class="form-submit" onclick="submitForm()">Отправить</button>
+        <div class="form-success" id="formSuccess">Спасибо! Мы свяжемся с вами в ближайшее время.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-logo">
+        <img src="https://i.ibb.co/cKSy1N9b/image.png" alt="" class="footer-owl">
+        <span class="footer-name">Репетиторий №1</span>
+      </div>
+      <span class="footer-copy">© 2025 Репетиторий №1 · Санкт-Петербург</span>
+    </div>
+  </div>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+function submitForm() {
+  const name = document.getElementById('f-name').value.trim();
+  const contact = document.getElementById('f-contact').value.trim();
+  if (!name || !contact) {
+    alert('Пожалуйста, заполните имя и контакт.');
+    return;
+ 
