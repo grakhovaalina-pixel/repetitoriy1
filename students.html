@@ -13,6 +13,7 @@
   --cream: #FAF6F0; --beige: #F0E8DA; --sand: #E0CDB5;
   --brown-lt: #C9B49A; --brown: #7C6A55; --brown-dk: #3E2F1E;
   --text: #2A1F14; --muted: #7A6552;
+  --accent-bg: #EDE0CF;
 }
 html { scroll-behavior: smooth; }
 body { background: var(--cream); color: var(--text); font-family: "Outfit", sans-serif; font-weight: 300; line-height: 1.7; }
@@ -22,8 +23,7 @@ h1, h2, h3 { font-family: "Playfair Display", serif; font-weight: 400; line-heig
 /* HEADER */
 header { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(250,246,240,0.94); backdrop-filter: blur(10px); border-bottom: 1px solid var(--sand); }
 .header-inner { max-width: 1080px; margin: 0 auto; padding: 0 36px; height: 62px; display: flex; align-items: center; justify-content: space-between; }
-.logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
-.logo-owl { height: 36px; width: auto; object-fit: contain; }
+.logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
 .logo-text { font-family: "Playfair Display", serif; font-size: 19px; font-weight: 500; color: var(--brown-dk); letter-spacing: 0.01em; }
 nav { display: flex; gap: 28px; align-items: center; }
 nav a { text-decoration: none; font-size: 13px; color: var(--muted); letter-spacing: 0.04em; transition: color 0.2s; }
@@ -31,54 +31,46 @@ nav a:hover { color: var(--brown-dk); }
 .nav-cta { background: var(--brown-dk) !important; color: var(--cream) !important; padding: 8px 18px; border-radius: 3px; }
 .nav-cta:hover { background: var(--brown) !important; }
 
-/* HERO — светло-бежевый */
-.hero { padding-top: 62px; min-height: 52vh; display: flex; flex-direction: column; justify-content: flex-end; background: var(--cream); }
+/* HERO — только текст, тёмный фон */
+.hero { padding-top: 62px; min-height: 52vh; display: flex; flex-direction: column; justify-content: flex-end; background: var(--brown-dk); }
 .hero-content { padding: 72px 0 80px; }
-.hero-title { font-size: clamp(38px, 5.5vw, 76px); font-weight: 400; color: var(--brown-dk); line-height: 1.05; margin-bottom: 24px; animation: fadeUp 0.7s ease both; }
-.hero-sub { font-size: clamp(15px, 1.6vw, 17px); color: var(--muted); font-weight: 300; max-width: 500px; line-height: 1.65; animation: fadeUp 0.7s 0.15s ease both; }
+.hero-title { font-size: clamp(42px, 6vw, 84px); font-weight: 400; color: var(--cream); line-height: 1.0; margin-bottom: 24px; animation: fadeUp 0.7s ease both; }
+.hero-sub { font-size: clamp(15px, 1.6vw, 17px); color: rgba(250,246,240,0.62); font-weight: 300; max-width: 500px; line-height: 1.65; animation: fadeUp 0.7s 0.15s ease both; }
 
-/* SERVICES wrapper */
+/* SERVICES */
 .services { background: var(--cream); }
 
-/* ── 1. АРЕНДА КЛАССОВ — светло-бежевый, с фото, обводка ── */
-.rental-wrap { padding: 56px 0 0; }
-.rental-card { max-width: 1080px; margin: 0 auto; padding: 0 36px; }
-.rental-card-inner {
-  display: grid; grid-template-columns: 1fr 1fr;
-  border: 1px solid var(--sand); border-radius: 4px; overflow: hidden;
-}
-.rental-body { padding: 64px 60px; display: flex; flex-direction: column; gap: 20px; justify-content: center; background: var(--cream); }
-.rental-body h2 { font-size: clamp(26px, 2.8vw, 38px); color: var(--brown-dk); }
-.rental-body p { font-size: 15px; font-weight: 300; color: var(--muted); line-height: 1.7; max-width: 380px; }
-.rental-photo { min-height: 420px; overflow: hidden; }
-.rental-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; }
+/* ── 1. АРЕНДА КЛАССОВ — широкий, текст слева, фото справа ── */
+.rental { display: grid; grid-template-columns: 1fr 1fr; border-bottom: 1px solid var(--sand); }
+.rental-body { padding: 88px 64px; display: flex; flex-direction: column; gap: 20px; justify-content: center; background: var(--brown-dk); }
+.rental-body h2 { font-size: clamp(28px, 3vw, 40px); color: var(--cream); }
+.rental-body p { font-size: 15px; font-weight: 300; color: rgba(250,246,240,0.65); line-height: 1.7; max-width: 400px; }
+.rental-photo { background: #2e2016; min-height: 440px; display: flex; align-items: center; justify-content: center; }
+.rental-photo-hint { font-family: "Playfair Display",serif; font-size: 13px; font-style: italic; color: rgba(201,180,154,0.4); }
 
-.btn { display: inline-block; padding: 13px 28px; border-radius: 3px; text-decoration: none; font-family: "Outfit", sans-serif; font-size: 12px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; transition: background 0.2s; align-self: flex-start; background: var(--brown-dk); color: var(--cream); }
-.btn:hover { background: var(--brown); }
+/* кнопка только для аренды */
+.btn { display: inline-block; padding: 13px 28px; border-radius: 3px; text-decoration: none; font-family: "Outfit", sans-serif; font-size: 12px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; transition: background 0.2s; align-self: flex-start; background: var(--cream); color: var(--brown-dk); }
+.btn:hover { background: var(--beige); }
 
-/* ── 2+3. ПАРА — обводка, отступы, без фото ── */
-.pair-wrap { padding: 24px 0 0; }
-.pair-grid { max-width: 1080px; margin: 0 auto; padding: 0 36px; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-.pair-item {
-  border: 1px solid var(--sand); border-radius: 4px; overflow: hidden;
-  display: flex; flex-direction: column; background: var(--cream);
-}
-.pair-body { padding: 44px 44px 52px; display: flex; flex-direction: column; gap: 14px; flex: 1; }
+/* ── 2+3. ПАРА: инд занятия + аренда инструментов ── */
+.pair { display: grid; grid-template-columns: 1fr 1fr; border-bottom: 1px solid var(--sand); }
+.pair-item { display: flex; flex-direction: column; border-right: 1px solid var(--sand); }
+.pair-item:last-child { border-right: none; }
+.pair-photo { background: var(--beige); height: 260px; display: flex; align-items: center; justify-content: center; border-bottom: 1px solid var(--sand); }
+.pair-photo-hint { font-family: "Playfair Display",serif; font-size: 13px; font-style: italic; color: var(--brown-lt); }
+.pair-body { padding: 44px 40px 56px; display: flex; flex-direction: column; gap: 14px; }
 .pair-body h3 { font-size: clamp(20px, 2vw, 26px); color: var(--brown-dk); }
 .pair-body p { font-size: 15px; font-weight: 300; color: var(--muted); line-height: 1.7; }
-.link-more { text-decoration: none; font-size: 14px; font-weight: 400; color: var(--brown); transition: color 0.2s; align-self: flex-start; margin-top: auto; padding-top: 8px; }
+.link-more { text-decoration: none; font-size: 14px; font-weight: 400; color: var(--brown); transition: color 0.2s; align-self: flex-start; margin-top: 4px; }
 .link-more:hover { color: var(--brown-dk); }
 
-/* ── 4. АКТЁРСКОЕ — с фото, обводка ── */
-.acting-wrap { padding: 24px 0 56px; }
+/* ── 4. АКТЁРСКОЕ — с отступами по бокам ── */
+.acting-wrap { padding: 72px 0 80px; border-bottom: 1px solid var(--sand); }
 .acting-card { max-width: 1080px; margin: 0 auto; padding: 0 36px; }
-.acting-card-inner {
-  border: 1px solid var(--sand); border-radius: 4px; overflow: hidden;
-  display: grid; grid-template-columns: 1fr 1fr; background: var(--beige);
-}
-.acting-photo { min-height: 340px; overflow: hidden; }
-.acting-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; }
-.acting-body { padding: 52px 56px; display: flex; flex-direction: column; background: transparent; gap: 16px; justify-content: center; background: var(--beige); }
+.acting-card-inner { background: var(--accent-bg); border-radius: 4px; display: grid; grid-template-columns: 1fr 1fr; overflow: hidden; }
+.acting-photo { background: #ddd0b8; min-height: 300px; display: flex; align-items: center; justify-content: center; }
+.acting-photo-hint { font-family: "Playfair Display",serif; font-size: 13px; font-style: italic; color: var(--brown-lt); }
+.acting-body { padding: 52px 56px; display: flex; flex-direction: column; gap: 16px; justify-content: center; }
 .acting-body h3 { font-size: clamp(20px, 2vw, 26px); color: var(--brown-dk); }
 .acting-body p { font-size: 15px; font-weight: 300; color: var(--muted); line-height: 1.7; }
 
@@ -86,19 +78,19 @@ nav a:hover { color: var(--brown-dk); }
 .text-block { background: var(--brown-dk); padding: 88px 0; }
 .text-block-inner { display: grid; grid-template-columns: 5fr 7fr; gap: 80px; align-items: start; }
 .text-block-lead { font-family: "Playfair Display", serif; font-size: clamp(22px, 2.6vw, 30px); font-weight: 400; color: var(--cream); line-height: 1.35; }
-.text-block-details { display: flex; flex-direction: column; }
+.text-block-details { display: flex; flex-direction: column; gap: 0; }
 .text-detail-row { padding: 18px 0; border-bottom: 1px solid rgba(255,255,255,0.1); font-size: 15px; font-weight: 300; color: rgba(250,246,240,0.65); line-height: 1.6; display: flex; gap: 18px; align-items: flex-start; }
 .text-detail-row:first-child { border-top: 1px solid rgba(255,255,255,0.1); }
 .text-detail-icon { font-size: 15px; min-width: 20px; padding-top: 3px; flex-shrink: 0; color: var(--brown-lt); }
 
-/* MAP */
+/* MAP — бежевый */
 .map-section { background: var(--beige); padding: 88px 0; }
 .map-section h2 { font-size: clamp(30px,3.5vw,44px); color: var(--brown-dk); margin-bottom: 8px; }
 .map-sub { font-family: "Playfair Display", serif; font-size: 18px; font-style: italic; color: var(--muted); margin-bottom: 36px; }
 .map-wrap { border-radius: 4px; overflow: hidden; height: 420px; }
 .map-wrap iframe { width: 100%; height: 100%; border: none; display: block; }
 
-/* CONTACTS */
+/* CONTACTS — кремовый */
 .contacts { background: var(--cream); padding: 88px 0; }
 .contacts-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
 .contacts h2 { font-size: clamp(34px, 4vw, 48px); color: var(--brown-dk); margin-bottom: 40px; }
@@ -124,8 +116,6 @@ nav a:hover { color: var(--brown-dk); }
 /* FOOTER */
 footer { background: var(--brown-dk); padding: 32px 0; }
 .footer-inner { display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
-.footer-logo { display: flex; align-items: center; gap: 10px; }
-.footer-owl { height: 28px; width: auto; object-fit: contain; }
 .footer-name { font-family: "Playfair Display", serif; font-size: 17px; color: var(--cream); opacity: 0.45; }
 .footer-copy { font-size: 12px; color: var(--brown-lt); opacity: 0.4; }
 
@@ -134,15 +124,18 @@ footer { background: var(--brown-dk); padding: 32px 0; }
 @media (max-width: 820px) {
   .container, .header-inner { padding-left: 20px; padding-right: 20px; }
   nav { display: none; }
-  .hero-title { font-size: 36px; }
+  .hero-title { font-size: 38px; }
   .hero-content { padding: 52px 0 60px; }
-  .rental-card, .acting-card { padding: 0 20px; }
-  .rental-card-inner, .acting-card-inner { grid-template-columns: 1fr; }
+  .rental { grid-template-columns: 1fr; }
   .rental-photo { min-height: 220px; order: -1; }
-  .rental-body { padding: 36px 28px; }
-  .pair-grid { grid-template-columns: 1fr; padding: 0 20px; gap: 16px; }
-  .pair-body { padding: 32px 28px 40px; }
-  .acting-photo { min-height: 200px; }
+  .rental-body { padding: 40px 24px; }
+  .pair { grid-template-columns: 1fr; }
+  .pair-item { border-right: none; border-bottom: 1px solid var(--sand); }
+  .pair-item:last-child { border-bottom: none; }
+  .pair-body { padding: 28px 24px 36px; }
+  .acting-card { padding: 0 20px; }
+  .acting-card-inner { grid-template-columns: 1fr; }
+  .acting-photo { min-height: 180px; }
   .acting-body { padding: 36px 28px; }
   .text-block-inner { grid-template-columns: 1fr; gap: 40px; }
   .contacts-grid { grid-template-columns: 1fr; gap: 48px; }
@@ -155,7 +148,6 @@ footer { background: var(--brown-dk); padding: 32px 0; }
 <header>
   <div class="header-inner">
     <a href="index.html" class="logo">
-      <img src="https://i.ibb.co/5x6xrd2v/image.png" alt="Репетиторий №1" class="logo-owl">
       <span class="logo-text">Репетиторий №1</span>
     </a>
     <nav>
@@ -168,59 +160,59 @@ footer { background: var(--brown-dk); padding: 32px 0; }
   </div>
 </header>
 
-<!-- HERO — светло-бежевый -->
+<!-- HERO -->
 <section class="hero">
   <div class="hero-content container">
-    <h1 class="hero-title">Приходите и занимайтесь<br>как дома.</h1>
-    <p class="hero-sub">Вас всегда ждёт свободный класс, настроенный инструмент и тихая атмосфера без спешки и оценок. Музицируйте комфортно и в своём темпе.</p>
+    <h1 class="hero-title">Занимайтесь спокойно<br>в своём темпе</h1>
+    <p class="hero-sub">Вас всегда ждёт свободный класс, настроенный инструмент и тихая атмосфера без спешки и оценок — приходите и занимайтесь как дома</p>
   </div>
 </section>
 
 <!-- SERVICES -->
 <section class="services" id="services">
 
-  <!-- 1. Аренда классов — с фото, обводка -->
-  <div class="rental-wrap" id="booking">
-    <div class="rental-card">
-      <div class="rental-card-inner">
-        <div class="rental-body">
-          <h2>Аренда классов</h2>
-          <p>Три просторных зала с настроенным фортепиано и хорошей шумоизоляцией — приходите одни, с педагогом или небольшим ансамблем. Гибкий график, доступные цены и абонементы для тех, кто занимается регулярно.</p>
-          <a href="#" class="btn">Забронировать зал</a>
-        </div>
-        <div class="rental-photo">
-          <img src="https://i.ibb.co/cS5dHfsC/IMG-9907.webp" alt="Зал Репетитория №1">
-        </div>
+  <!-- 1. Аренда классов -->
+  <div class="rental" id="booking">
+    <div class="rental-body">
+      <h2>Аренда классов</h2>
+      <p>Три просторных зала с настроенным фортепиано и хорошей шумоизоляцией — приходите одни, с педагогом или небольшим ансамблем. Гибкий график, доступные цены и абонементы для тех, кто занимается регулярно.</p>
+      <a href="#" class="btn">Забронировать зал</a>
+    </div>
+    <div class="rental-photo">
+      <span class="rental-photo-hint">фото зала с роялем</span>
+    </div>
+  </div>
+
+  <!-- 2 + 3. Пара -->
+  <div class="pair">
+    <div class="pair-item">
+      <div class="pair-photo">
+        <span class="pair-photo-hint">фото урока с педагогом</span>
+      </div>
+      <div class="pair-body">
+        <h3>Индивидуальные занятия</h3>
+        <p>Занятия с преподавателями студии по фортепиано, скрипке, вокалу и сольфеджио. Можно заниматься по программе училища или выстроить свой маршрут — с нуля, для души, для поступления.</p>
+        <a href="#" class="link-more">Подробнее →</a>
+      </div>
+    </div>
+    <div class="pair-item">
+      <div class="pair-photo">
+        <span class="pair-photo-hint">фото инструментов</span>
+      </div>
+      <div class="pair-body">
+        <h3>Аренда инструментов</h3>
+        <p>Нет своего инструмента — не проблема. Берите в прокат скрипку, флейту или баян: на день, неделю или месяц. Удобно, если хочется попробовать что-то новое или не хочется везти инструмент с собой.</p>
+        <a href="#" class="link-more">Подробнее →</a>
       </div>
     </div>
   </div>
 
-  <!-- 2 + 3. Пара — без фото, обводка, отступы -->
-  <div class="pair-wrap">
-    <div class="pair-grid">
-      <div class="pair-item">
-        <div class="pair-body">
-          <h3>Индивидуальные занятия</h3>
-          <p>Занятия с преподавателями студии по фортепиано, скрипке, вокалу и сольфеджио. Можно заниматься по программе училища или выстроить свой маршрут — с нуля, для души, для поступления.</p>
-          <a href="#" class="link-more">Подробнее →</a>
-        </div>
-      </div>
-      <div class="pair-item">
-        <div class="pair-body">
-          <h3>Аренда инструментов</h3>
-          <p>Нет своего инструмента — не проблема. Берите в прокат скрипку, флейту или баян: на день, неделю или месяц. Удобно, если хочется попробовать что-то новое или не хочется везти инструмент с собой.</p>
-          <a href="#" class="link-more">Подробнее →</a>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- 4. Актёрское — с фото театра, обводка -->
+  <!-- 4. Актёрское — с отступами -->
   <div class="acting-wrap">
     <div class="acting-card">
       <div class="acting-card-inner">
         <div class="acting-photo">
-          <img src="https://i.ibb.co/RpFGYwnj/acting-workshop-theatre.jpg" alt="Курс актёрского мастерства">
+          <span class="acting-photo-hint">фото с курса актёрского</span>
         </div>
         <div class="acting-body">
           <h3>Курс актёрского мастерства</h3>
@@ -258,7 +250,7 @@ footer { background: var(--brown-dk); padding: 32px 0; }
   </div>
 </section>
 
-<!-- MAP -->
+<!-- MAP — бежевый -->
 <section class="map-section" id="map">
   <div class="container">
     <h2>Как нас найти</h2>
@@ -271,7 +263,7 @@ footer { background: var(--brown-dk); padding: 32px 0; }
   </div>
 </section>
 
-<!-- CONTACTS -->
+<!-- CONTACTS — кремовый -->
 <section class="contacts" id="contacts">
   <div class="container">
     <div class="contacts-grid">
@@ -336,25 +328,14 @@ footer { background: var(--brown-dk); padding: 32px 0; }
 <footer>
   <div class="container">
     <div class="footer-inner">
-      <div class="footer-logo">
-        <img src="https://i.ibb.co/cKSy1N9b/image.png" alt="" class="footer-owl">
-        <span class="footer-name">Репетиторий №1</span>
-      </div>
+      <span class="footer-name">Репетиторий №1</span>
       <span class="footer-copy">© 2025 Репетиторий №1 · Санкт-Петербург</span>
     </div>
   </div>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 function submitForm() {
   const name = document.getElementById('f-name').value.trim();
   const contact = document.getElementById('f-contact').value.trim();
-  if (!name || !contact) { alert('Пожалуйста, заполните имя и контакт.'); return; }
-  document.getElementById('formSuccess').style.display = 'block';
-  document.getElementById('f-name').value = '';
-  document.getElementById('f-contact').value = '';
-  document.getElementById('f-msg').value = '';
-}
-</script>
-</body>
-</html>
+  if (!name || !contact) { alert('Пожалуйста, заполните имя и контакт.'); return;
