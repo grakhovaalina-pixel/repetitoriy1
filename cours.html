@@ -172,7 +172,14 @@ nav a:hover { color: var(--brown-dk); }
 .footer-col a:hover { color: var(--cream); }
 .footer-copy { font-size: 12px; color: var(--brown-lt); opacity: 0.7; }
 
-/* RESPONSIVE */
+/* TEACHERS WRAP — order switching */
+.teachers-wrap { display: flex; flex-direction: column; gap: 40px; }
+#teachers-3 { order: 1; }
+#teachers-4 { order: 2; }
+@media (max-width: 900px) {
+  #teachers-3 { order: 2; }
+  #teachers-4 { order: 1; }
+}
 @media (max-width: 900px) {
   .teachers-grid { grid-template-columns: repeat(2, 1fr); }
   .teachers-grid-bottom { grid-template-columns: repeat(2, 1fr); }
@@ -213,7 +220,7 @@ nav a:hover { color: var(--brown-dk); }
       <a href="/repetitoriy1/students">Ученикам</a>
       <a href="/repetitoriy1/teachers">Педагогам</a>
       <a href="/repetitoriy1/cours">Актёрское мастерство</a>
-      <a href="/repetitoriy1/rental">Забронировать класс</a>
+      <a href="/repetitoriy1/rental" class="nav-cta">Забронировать класс</a>
     </nav>
     <button class="burger" id="burger" aria-label="Меню" aria-expanded="false">
       <span></span><span></span><span></span>
@@ -369,73 +376,75 @@ nav a:hover { color: var(--brown-dk); }
       <p>Обучение ведут действующие артисты, режиссёры и педагоги театра — люди, которые работают в профессии и передают не только знания, но и реальный сценический опыт.</p>
     </div>
 
-    <!-- Первые 3 -->
-    <div class="teachers-grid-bottom">
-      <div class="teacher-card">
-        <div class="teacher-photo">
-          <img src="https://i.ibb.co/Qv74czVm/image.png" alt="Сергей Анатольевич Шалагин">
+    <div class="teachers-wrap">
+      <!-- В HTML: сначала 4 (для мобильного), потом 3 -->
+      <!-- На десктопе через order меняем местами -->
+      <div class="teachers-grid" id="teachers-4">
+        <div class="teacher-card">
+          <div class="teacher-photo">
+            <img src="https://i.ibb.co/LX8zyMhD/image.png" alt="Анна Витальевна Воронина">
+          </div>
+          <div class="teacher-body">
+            <div class="teacher-name">Анна Витальевна Воронина</div>
+            <div class="teacher-desc">Лауреат международного конкурса «Янтарный соловей». Музыкальный руководитель детской театральной студии.</div>
+          </div>
         </div>
-        <div class="teacher-body">
-          <div class="teacher-name">Сергей Анатольевич Шалагин</div>
-          <div class="teacher-desc">Заслуженный артист РФ. Основатель театра «Петербургская оперетта». Лауреат I Всесоюзного конкурса артистов оперетты и мюзикла.</div>
+        <div class="teacher-card">
+          <div class="teacher-photo">
+            <img src="https://i.ibb.co/xtHm8mdb/image.png" alt="Дженальдина Анатольевна Журавлева">
+          </div>
+          <div class="teacher-body">
+            <div class="teacher-name">Дженальдина Анатольевна Журавлева</div>
+            <div class="teacher-desc">Дипломант всероссийских и международных конкурсов. Магистр педагогического образования (музыкальный театр). Музыкант-исполнитель (альт, скрипка).</div>
+          </div>
+        </div>
+        <div class="teacher-card">
+          <div class="teacher-photo">
+            <img src="https://i.ibb.co/FbY2PMyC/image.png" alt="Владислав Евгеньевич Петровский">
+          </div>
+          <div class="teacher-body">
+            <div class="teacher-name">Владислав Евгеньевич Петровский</div>
+            <div class="teacher-desc">Актёр, режиссёр и преподаватель.</div>
+          </div>
+        </div>
+        <div class="teacher-card">
+          <div class="teacher-photo">
+            <img src="https://i.ibb.co/cch334YY/image.png" alt="Павел Александрович Шемерей">
+          </div>
+          <div class="teacher-body">
+            <div class="teacher-name">Павел Александрович Шемерей</div>
+            <div class="teacher-desc">Хореограф. Актёр театра и кино.</div>
+          </div>
         </div>
       </div>
-      <div class="teacher-card">
-        <div class="teacher-photo">
-          <img src="https://i.ibb.co/tTJnmrH0/image.png" alt="Ярослав Викторович Шварёв">
-        </div>
-        <div class="teacher-body">
-          <div class="teacher-name">Ярослав Викторович Шварёв</div>
-          <div class="teacher-desc">Актёр театра и кино (ведущий мастер сцены). Режиссёр музыкального театра. Дипломант «Золотой маски» и премии «Музыкальное сердце театра».</div>
-        </div>
-      </div>
-      <div class="teacher-card">
-        <div class="teacher-photo">
-          <img src="https://i.ibb.co/Tq7ZHNSR/image.png" alt="Любовь Юрьевна Журавлева">
-        </div>
-        <div class="teacher-body">
-          <div class="teacher-name">Любовь Юрьевна Журавлева</div>
-          <div class="teacher-desc">Член Союза театральных деятелей РФ. Режиссёр. Солистка музыкального театра «Петербургская оперетта».</div>
-        </div>
-      </div>
-    </div>
 
-    <!-- Нижние 4 -->
-    <div class="teachers-grid" style="margin-top: 40px;">
-      <div class="teacher-card">
-        <div class="teacher-photo">
-          <img src="https://i.ibb.co/LX8zyMhD/image.png" alt="Анна Витальевна Воронина">
+      <div class="teachers-grid-bottom" id="teachers-3">
+        <div class="teacher-card">
+          <div class="teacher-photo">
+            <img src="https://i.ibb.co/Qv74czVm/image.png" alt="Сергей Анатольевич Шалагин">
+          </div>
+          <div class="teacher-body">
+            <div class="teacher-name">Сергей Анатольевич Шалагин</div>
+            <div class="teacher-desc">Заслуженный артист РФ. Основатель театра «Петербургская оперетта». Лауреат I Всесоюзного конкурса артистов оперетты и мюзикла.</div>
+          </div>
         </div>
-        <div class="teacher-body">
-          <div class="teacher-name">Анна Витальевна Воронина</div>
-          <div class="teacher-desc">Лауреат международного конкурса «Янтарный соловей». Музыкальный руководитель детской театральной студии.</div>
+        <div class="teacher-card">
+          <div class="teacher-photo">
+            <img src="https://i.ibb.co/tTJnmrH0/image.png" alt="Ярослав Викторович Шварёв">
+          </div>
+          <div class="teacher-body">
+            <div class="teacher-name">Ярослав Викторович Шварёв</div>
+            <div class="teacher-desc">Актёр театра и кино (ведущий мастер сцены). Режиссёр музыкального театра. Дипломант «Золотой маски» и премии «Музыкальное сердце театра».</div>
+          </div>
         </div>
-      </div>
-      <div class="teacher-card">
-        <div class="teacher-photo">
-          <img src="https://i.ibb.co/xtHm8mdb/image.png" alt="Дженальдина Анатольевна Журавлева">
-        </div>
-        <div class="teacher-body">
-          <div class="teacher-name">Дженальдина Анатольевна Журавлева</div>
-          <div class="teacher-desc">Дипломант всероссийских и международных конкурсов. Магистр педагогического образования (музыкальный театр). Музыкант-исполнитель (альт, скрипка).</div>
-        </div>
-      </div>
-      <div class="teacher-card">
-        <div class="teacher-photo">
-          <img src="https://i.ibb.co/FbY2PMyC/image.png" alt="Владислав Евгеньевич Петровский">
-        </div>
-        <div class="teacher-body">
-          <div class="teacher-name">Владислав Евгеньевич Петровский</div>
-          <div class="teacher-desc">Актёр, режиссёр и преподаватель.</div>
-        </div>
-      </div>
-      <div class="teacher-card">
-        <div class="teacher-photo">
-          <img src="https://i.ibb.co/cch334YY/image.png" alt="Павел Александрович Шемерей">
-        </div>
-        <div class="teacher-body">
-          <div class="teacher-name">Павел Александрович Шемерей</div>
-          <div class="teacher-desc">Хореограф. Актёр театра и кино.</div>
+        <div class="teacher-card">
+          <div class="teacher-photo">
+            <img src="https://i.ibb.co/Tq7ZHNSR/image.png" alt="Любовь Юрьевна Журавлева">
+          </div>
+          <div class="teacher-body">
+            <div class="teacher-name">Любовь Юрьевна Журавлева</div>
+            <div class="teacher-desc">Член Союза театральных деятелей РФ. Режиссёр. Солистка музыкального театра «Петербургская оперетта».</div>
+          </div>
         </div>
       </div>
     </div>
